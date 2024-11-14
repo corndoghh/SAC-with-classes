@@ -1,0 +1,21 @@
+body {
+    background-color: #95d5b2;
+    font-family: verdana, sans-serif;
+    color: black;
+}
+
+
+.info{
+    background-color: white;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: pink;
+    padding: 1%;
+    margin-top: 0.75%;
+    margin-bottom: 0.75%;
+    /* width: 48%; */
+}
+
+.info p {
+    background-color: white;
+}

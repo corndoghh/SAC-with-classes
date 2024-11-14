@@ -45,7 +45,7 @@ const notFound = (req, res) => {
 
 //get 
 app.get('/', (req, res) => {
-    res.render("ourInfo.ejs")
+    res.render("main.ejs")
 })
 
 

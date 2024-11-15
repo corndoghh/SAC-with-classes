@@ -48,6 +48,10 @@ app.get('/', (req, res) => {
     res.render("main.ejs")
 })
 
+app.get('/about-us', (req, res) => {
+    res.render("ourInfo.ejs")
+})
+
 
 
 //404 catch

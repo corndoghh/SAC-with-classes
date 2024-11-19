@@ -42,6 +42,28 @@ const notFound = (req, res) => {
     res.status(404).send("404 not found")
 }
 
+const authentication = async (req, res) => {
+    if (req.session.loggedIn) { console.log("already logged in"); return }
+    const {token, email, tempCode} = req.query
+
+    const type = req.url === "/login" ? "l" : req.url === "/sign-up" ? "s" : req.url === "/forgot-password" ? "f" : "r"
+
+    if (
+        type === "r" && 
+        ((token === undefined || email === undefined || tempCode === undefined) ||
+        await getHashedToken(email) !== token ||
+        !await doesPropertyExist(email, "tempCode") ||
+        await getUserValue(email, "tempCode") !== tempCode)
+    ) { res.send("Invalid password reset link"); return }
+
+    res.render("form-page.ejs", {type, token, email, tempCode})
+}
+
+const reqNoAuth = (req, res, next) => {
+    if (!req.session.loggedIn) { next(); return }
+    res.send("Error Already Logged In")
+}
+
 
 //get 
 app.get('/', (req, res) => {
@@ -51,6 +73,12 @@ app.get('/', (req, res) => {
 app.get('/about-us', (req, res) => {
     res.render("ourInfo.ejs")
 })
+
+app.get('/sign-up', reqNoAuth, authentication)
+app.get('/signup', reqNoAuth, (req, res) => res.redirect('/sign-up'))
+app.get('/login', reqNoAuth, authentication)
+app.get('/forgot-password', reqNoAuth, authentication)
+app.get('/reset-password', reqNoAuth, authentication)
 
 
 

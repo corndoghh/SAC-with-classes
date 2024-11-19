@@ -79,3 +79,8 @@ form h2 {
 .forgot-password:hover {
     opacity: 0.8; /* Slightly increases opacity on hover */
 }
+
+#aboutPage #homeButt{
+    text-decoration: underline 2px;
+    text-underline-offset: 9px;
+}

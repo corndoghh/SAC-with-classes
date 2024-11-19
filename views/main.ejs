@@ -1,40 +1,8 @@
 <head>
-    <link rel="stylesheet" href="css/header.css">
     <title>SAC Website</title>
 </head>
 
 <body>
-
-    <header>
-        <p>
-            <img id = "logo" src="tempAssets\globe.png" alt="SAC Logo">
-            <h1 id="title">SAC Website</h1>
-            <button id="settings" type="button">Accessibility Settings</button>
-
-            <input id = "searchText" type="text" placeholder="Search..">
-            <button id = "searchButt" type="submit"><img id = "searchImg" src="tempAssets\search.png" alt="Search"></button>
-
-            <nav>
-                <ul id="navigate">
-                    <li id = "navButt"><a id = "homeButt" href = views\main.ejs>Home</a></li>
-                    <li id = "navButt"><a href = views\ourInfo.ejs>About Us</a></li>
-                    <li id = "navButt">Our Goals</li>
-                    <li id = "navButt">Sign-Up</li>
-                    <li id = "navButt">FAQ</li>
-                    <li id="secret">secretttttttttttttt</li>
-                </ul>
-            </nav>
-        </p>
-    </header>
-
-    <footer>
-        <p id="footer">
-            <img id = "logoBottom" src="tempAssets\globe.png" alt="SAC Logo">
-            <div>
-                <h1 id="copyright">2024 © SAC Website</h1>
-                <p id="TandP">Terms of service</p>
-                <p id="TandP">Privacy policy</p>
-            </div>
-        </p>
-    </footer>
+    <%- include("includes/header.ejs") %> 
+    <%- include("includes/footer.ejs") %> 
 </body>

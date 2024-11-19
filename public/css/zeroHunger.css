@@ -1,32 +1,33 @@
 h1{
     font-family:'Trebuchet MS', verdana, sans-serif;
     font-style: bold;
+    color: black;
 }
 
 
 body {
-    background-color: #95d5b2;
+    background-color: white;
     font-family: verdana, sans-serif;
     color: black;
 }
 
 
 .info{
-    background-color: white;
+    background-color: #95d5b2;
     border-radius: 8px;
     border-width: 3px;
     padding: 1%;
     margin-top: 0.75%;
     margin-bottom: 0.75%;
     float: right;
-    /* width: 48%; */
+    color:black;
+    font-family: verdana, sans-serif;
+    width: 45%;
 }
 
-.info p {
-    background-color: white;
-}
 
 #quote{
+    font-family: verdana, sans-serif;
     font-style: italic;
     color: #95d5b2;
 }

@@ -42,7 +42,7 @@ nav ul li{
     padding-right: 20px;   
 }
 
-nav ul li:hover{
+#navButt:hover{
     background-color: #ffffff;
     padding-top: 2.5px;
     padding-bottom: 2.5px;
@@ -145,5 +145,4 @@ nav{
     font-size: 11px;
     font-family: Verdana;
     font-weight: 100;
-    errrrorrrrrr continue this
 }

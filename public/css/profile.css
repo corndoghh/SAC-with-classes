@@ -1,0 +1,115 @@
+/* styles.css */
+#mainPage {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#mainPage .settings-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.dark-mode #mainPage .settings-container {
+    background: #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#mainPage h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#mainPage .form-group {
+    margin-bottom: 20px;
+}
+
+#mainPage label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#mainPage input[type="text"],
+#mainPage input[type="password"],
+#mainPage select,
+#mainPage button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#mainPage button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#mainPage button:hover {
+    background-color: #0056b3;
+}
+
+#mainPage .profile-pic-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mainPage .profile-pic-wrapper img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#mainPage input[type="file"] {
+    font-size: 14px;
+}
+
+.dark-mode #mainPage input,
+.dark-mode #mainPage select,
+.dark-mode #mainPage button {
+    background-color: #555;
+    color: white;
+    border: 1px solid #777;
+}
+
+.dark-mode #mainPage button {
+    background-color: #007bff;
+}
+
+.dark-mode #mainPage button:hover {
+    background-color: #0056b3;
+}
+
+#mainPage .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#mainPage .delete-button:hover {
+    background-color: #d93636;
+}
+
+
+
+
+
+/* Content styling */
+#mainPage .content {
+    padding: 20px;
+}

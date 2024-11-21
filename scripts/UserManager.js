@@ -1,3 +1,5 @@
+const UserError = require("../Errors/UserError")
+const UserErrorTypes = require("../Errors/UserErrorTypes")
 const { readDatabase, deleteEntry, updateEntry, addEntry } = require("./DatabaseManager")
 const Crypto = require("crypto")
 
@@ -11,9 +13,12 @@ class User {
 
     createAccount = async (username, password) => {
         if (this.hasAccount()) { return }
-        this.#setValue("username", username)
-        this.setPassword(password)
-        this.#setValue("HasAccount", true)
+        await this.#setValue("Username", username)
+        await this.setPassword(password)
+        await this.#setValue("HasAccount", true)
+        await this.#setValue("TwoFactor", "off")
+        await this.#setValue("Language", "en")
+
     }
 
     delete = async () => {
@@ -53,20 +58,28 @@ class User {
 
     comparePasswordHash = (password) => {
         return this.#data.HashedPassword === Crypto.pbkdf2Sync(password, this.#data.Salt, 10000, 64, 'sha512').toString("base64")
+    }
 
+    login = async (req) => {
+        req.session.loggedIn = true
+        req.session.UUID = this.getValue("UUID")
+        return
     }
 
 }
 
 module.exports.addUser = async (Email, FirstName, MiddleNames, LastName, Comment) => {
-    //TO DO Error handeling 
-    if (this.doesUserExist(Email)) { console.log("no"); return }
-
+    //TO DO Error handeling    
     const user = { FirstName, MiddleNames, LastName, Email, "UUID": Crypto.randomUUID(), Comment, "IsEmailVerified": false, "TimeCreated": Date.now(), "HasAccount": false }
 
     await addEntry(user)
 }
 
+/**
+ * 
+ * @param {*} identifier 
+ * @returns {User}
+ */
 module.exports.getUser = async (identifier) => {
     const users = await readDatabase()
 

@@ -1,4 +1,9 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#headerFooter #body {
     font-family: sans-serif, Arial;
     color: #3F2860;
     background-color: #ffffff;
@@ -6,7 +11,7 @@ body {
     line-height: 1.5;
 }
 
-header{
+#headerFooter header{
     width: 100%;
     padding-left: 6px;
     padding-right: 6px;
@@ -16,7 +21,7 @@ header{
     margin: -10px;
 }
 
-#title{
+#headerFooter #title{
     width: 50%;
     padding: 10px;
     color: #000000;
@@ -28,7 +33,7 @@ header{
     font-size: 37px;
 }
 
-#navigate{
+#headerFooter #navigate{
     list-style-type: none;
     text-align: center;
     font-family: Verdana;
@@ -36,32 +41,32 @@ header{
     margin-bottom: 5px;
 }
 
-nav ul li{
+#headerFooter nav ul li{
     display: inline;
     padding-left: 20px;
     padding-right: 20px;   
 }
 
-#navButt:hover{
+#headerFooter #navButt:hover{
     background-color: #ffffff;
     padding-top: 2.5px;
     padding-bottom: 2.5px;
 }
 
-nav ul li a{
+#headerFooter nav ul li a{
     text-decoration: none;
     padding: 5px;
     height: 100px;
     color: #000000;
 }
 
-#logo{
+#headerFooter #logo{
     max-width: 6%;
     float: inline-start;
     padding: 25px;
 }
 
-nav{
+#headerFooter nav{
     color: #000000;
     border: 3px solid #bab0a0;
     background: #bab0a0;
@@ -70,7 +75,7 @@ nav{
     margin: -10px;
 }
 
-#settings{
+#headerFooter #settings{
     border-radius: 8px;
     font-family: Verdana;
     position: absolute;
@@ -80,7 +85,7 @@ nav{
     font-size: 15px;
 }
 
-#searchImg{
+#headerFooter #searchImg{
     max-width: 25px;
     padding-top: 4px;
     padding-bottom: 3.5px;
@@ -88,7 +93,7 @@ nav{
     padding-right: 1px;
 }
 
-#searchButt{
+#headerFooter #searchButt{
     margin-left: -6px;
     position: absolute;
     top: 105px;
@@ -97,7 +102,7 @@ nav{
     border-bottom-right-radius: 8px;
 }
 
-#searchText{
+#headerFooter #searchText{
     position: absolute;
     top: 105px;
     right: 30px;
@@ -110,16 +115,16 @@ nav{
     border-radius: 8px;
 }
 
-#homeButt{
+#headerFooter #homeButt{
     text-decoration: underline 2px;
     text-underline-offset: 9px;
 }
 
-#secret{
+#headerFooter #secret{
     color: #bab0a0;
 }
 
-#copyright{
+#headerFooter #copyright{
     border: #3F2860 solid 3px;
     background: #3F2860;
     margin: -8px;
@@ -132,17 +137,30 @@ nav{
     padding-top: 30px;
 }
 
-#logoBottom{
+#headerFooter #logoBottom{
     max-width: 50px;
     float: inline-start;
     padding-left: 10px;
     padding-top: 15px;
 }
 
-#TandP{
+#headerFooter #TandP{
     padding-left: 75px;
     color: #ffffff;
     font-size: 11px;
     font-family: Verdana;
     font-weight: 100;
+}
+
+#headerFooter footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+
+
+}
+
+#MainPage {
+    flex: 1;
 }

@@ -1,0 +1,198 @@
+/* General Reset */
+#mainPage * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#mainPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Light Mode Styles */
+#mainPage #container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 50px;
+}
+
+/* Dark Mode Styles */
+.dark-mode #mainPage #container {
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    color: #f5f5f5;
+}
+
+/* Shared Container Elements */
+#mainPage #container > * {
+    align-content: center;
+    padding: 20px;
+    flex: 1 1 100px;
+}
+
+/* Headings */
+#mainPage #container h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+}
+
+.dark-mode #mainPage #container h1 {
+    color: #f9f9f9;
+}
+
+/* Bios Section */
+#mainPage #container #bios {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 100px;
+}
+
+#mainPage #container #bios > * {
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 6%;
+    margin-right: 6%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 0 38%;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.dark-mode #mainPage #container #bios > * {
+    background-color: #444;
+    color: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Article Styling */
+#mainPage #container #bios article > * {
+    padding: 20px;
+    flex: 1 0 10%;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+/* Table Section  */
+
+#mainPage #container #taskTable {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dark-mode #mainPage #container #taskTable > * {
+    color: #ddd;
+}
+
+#mainPage #container #taskTable h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #333;
+}
+
+#mainPage #container #taskTable table {
+    width: 90%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.dark-mode #mainPage #container #taskTable table td {
+    color: #f5f5f5;
+}
+
+.dark-mode #mainPage #container #taskTable table th {
+    color: #DCDCDC;
+}
+
+
+#mainPage #container #taskTable table th,
+#mainPage #container #taskTable table td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1em;
+    color: #555;
+}
+
+#mainPage #container #taskTable table th {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+#mainPage #container #taskTable table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dark-mode #mainPage #container #taskTable table tr:nth-child(even) {
+    background-color: #555;
+}
+
+.dark-mode #mainPage #container #taskTable table tr:nth-child(odd) {
+
+    background-color: #444;
+}
+
+#mainPage #container #taskTable table tr:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+#mainPage #container #taskTable table td {
+    border: 1px solid #ddd;
+}
+
+.dark-mode #mainPage #container #taskTable table td {
+    border: 1px solid #444;
+}
+
+#mainPage #container #taskTable table th:first-child,
+#mainPage #container #taskTable table td:first-child {
+    border-left: none;
+}
+
+#mainPage #container #taskTable table th:last-child,
+#mainPage #container #taskTable table td:last-child {
+    border-right: none;
+}
+
+.solid {
+    padding: 0 !important;
+    flex: 0 !important; 
+    box-shadow: none;
+    width: 92%;
+    transform: translate(4%,0);
+    border: 1px solid #bbb;
+}
+
+@media only screen and (max-width: 900px) {
+    #mainPage #container #bios > * {
+        flex: 1 0 50%;
+    }
+
+    
+}

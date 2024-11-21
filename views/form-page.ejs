@@ -1,8 +1,10 @@
+<%- include("includes/header.ejs") %>
+
 <!DOCTYPE html>
+<div id="mainPage">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <% if (type === 'l') { %>
     <title>Login</title>
     <% } else if (type === 's') { %>
@@ -26,24 +28,46 @@
         <% } else if (type === 'f') { %>
         <form action="/forgot-password" method="POST">
         <h2>Forgot Password</h2>
-        <% } else { %>
+        <% } else if (type === 'r') { %>
         <form action="/reset-password" method="POST">
         <h2>Reset Password</h2>   
+        <% } else if (type === 'a') { %>
+        <form action="/add-account" method="POST">
+        <h2>Create Acccount</h2>        
         <% } if (type !== 'l' && type !== 'r') { %>
         <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <label for="Email">Email</label>
+            <input type="Email" id="Email" name="Email" required>
         </div>
+        <% } if (type === 's') { %>
+            <div class="input-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" id="FirstName" name="FirstName" required>
+            </div>
+            <div class="input-group">
+                <label for="LastName">Last Name</label>
+                <input type="text" id="LastName" name="LastName" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Comment">Comment</label>
+                <textarea name="Comment" id="Comment"></textarea>
+            </div>
+
         <% } if (type !== 'f') { %>
             <% if (type !== 'r') { %> 
             <div class="input-group">
                 <label for="Username">Username</label>
-                <input type="text" id="Username" name="Username" required>
+                <input type="text" id="Username" name="Username" <% if (type === 'a') { %> 
+                    required
+                <% } %>>
             </div>
             <% } %>
             <div class="input-group">
                 <label for="Password">Password</label>
-                <input type="password" id="Password" name="Password" required>
+                <input type="Password" id="Password" name="Password" <% if (type === 'a') { %> 
+                    required
+                <% } %>>
             </div>
         <% } %>
             <% if (type === 'r') { %>
@@ -51,12 +75,24 @@
                 <input type="hidden" name="email" id="email" value=<%= email %>>
                 <input type="hidden" name="tempCode" id="tempCode" value=<%= tempCode %>>
             <% } if (type === 'l') { %>
-                <button type="button" onclick="forgotPassword()" class="forgot-password">Forgot Password</button>
+                <button type="button" onclick="window.location.href = '/forgot-password'" class="forgot-password">Forgot Password</button>
+                <div class="input-group">
+                    <button type="submit">Login</button>
+                </div>
+            <% } else if (type === 's' || type === 'a') { %>
+                <button type="button" onclick="window.location.href = '/login'" class="forgot-password">Login</button>
+                <div class="input-group">
+                    <button type="submit">Sign Up</button>
+                </div>
+            <% } else { %>
+                <div class="input-group">
+                    <button type="submit">Reset Password</button>
+                </div>
             <% } %>
-            <div class="input-group">
-                <button type="submit">Login</button>
-            </div>
+            <input type="hidden" name="returnUrl" value=<%= locals.return_url %>>
         </form>
     </div>
 </body>
 </html>
+</div>
+<%- include("includes/footer.ejs") %>

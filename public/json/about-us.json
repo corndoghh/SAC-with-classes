@@ -1,0 +1,309 @@
+[
+    {
+        "id": "container",
+        "children": [
+            {
+                "type": "h1",
+                "textContent": "About Us"
+            },
+            {
+                "type": "hr",
+                "class": "solid"
+            },
+            {
+                "type": "section",
+                "id": "bios"
+            },
+            {
+                "type": "hr",
+                "class": "solid"
+            },
+            {
+                "type": "section",
+                "id": "taskTable"
+            }
+        ]
+    },
+    {
+        "id": "bios",
+        "children": [
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "textContent": "Aaron"
+                    },
+                    {
+                        "type": "p",
+                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                    }
+                ]
+            },
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "textContent": "Harley"
+                    },
+                    {
+                        "type": "p",
+                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                    }
+                ]
+            },
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "textContent": "Sophie"
+                    },
+                    {
+                        "type": "p",
+                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                    }
+                ]
+            },
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "textContent": "Sylvain"
+                    },
+                    {
+                        "type": "p",
+                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "taskTable",
+        "children": [
+            {
+                "type": "h2",
+                "textContent": "Who Did What"
+            },
+            {
+                "type": "table",
+                "id": "table"
+            }
+        ]
+    },
+    {
+        "id": "table",
+        "children": [
+            {
+                "type": "thead",
+                "id": "thead"
+            },
+            {
+                "type": "tbody",
+                "id": "tbody"
+            }
+        ]
+    },
+    {
+        "id": "thead",
+        "children": [
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "th",
+                        "textContent": "Pages"
+                    },
+                    {
+                        "type": "th",
+                        "textContent": "HTML"
+                    },
+                    {
+                        "type": "th",
+                        "textContent": "CSS"
+                    },
+                    {
+                        "type": "th",
+                        "textContent": "JS/Node"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "tbody",
+        "children": [
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            },
+            {
+                "type": "tr",
+                "children": [
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    },
+                    {
+                        "type": "td",
+                        "textContent": "Null"
+                    }
+                ]
+            }
+        ]
+    }
+]

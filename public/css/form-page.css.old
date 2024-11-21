@@ -1,4 +1,3 @@
-/* Original CSS */
 #mainPage * {
     box-sizing: border-box;
     margin: 0;
@@ -7,19 +6,10 @@
 
 #mainPage {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.light-mode #mainPage {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.dark-mode #mainPage {
-    background-color: #333;
-    color: #f9f9f9;
 }
 
 #mainPage .form-container {
@@ -29,11 +19,6 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
-}
-
-.dark-mode #mainPage .form-container {
-    background-color: #444;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #mainPage form h2 {
@@ -58,12 +43,6 @@
     border-radius: 5px;
 }
 
-.dark-mode #mainPage .input-group input {
-    background-color: #555;
-    color: white;
-    border: 1px solid #777;
-}
-
 #mainPage .input-group button {
     width: 100%;
     padding: 10px;
@@ -76,36 +55,28 @@
     transition: background-color 0.3s ease;
 }
 
-.dark-mode #mainPage .input-group button {
-    background-color: #007bff;
-}
-
-.dark-mode #mainPage .input-group button:hover {
+#mainPage .input-group button:hover {
     background-color: #0056b3;
 }
 
 #mainPage .forgot-password {
     display: block;
-    margin: 0 auto;
-    font-size: 12px;
-    opacity: 0.6;
-    text-align: center;
-    padding: 10px 20px;
+    margin: 0 auto; /* Centers the button horizontally */
+    font-size: 12px; /* Makes the text small */
+    opacity: 0.6; /* Makes the text slightly opaque */
+    text-align: center; /* Ensures the text inside the button is centered */
+    padding: 10px 20px; /* Adds padding for better button appearance */
     background-color: #fff;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+    /* Optional: Button background color */
+    color: #333; /* Optional: Button text color */
+    border: none; /* Optional: Button border */
+    border-radius: 5px; /* Optional: Rounded corners */
+    cursor: pointer; /* Adds a pointer on hover */
+    transition: opacity 0.3s ease; /* Smooth transition on hover */
 }
 
-.dark-mode #mainPage .forgot-password {
-    background-color: #555;
-    color: #f9f9f9;
-}
-
-.dark-mode #mainPage .forgot-password:hover {
-    opacity: 0.8;
+#mainPage .forgot-password:hover {
+    opacity: 0.8; /* Slightly increases opacity on hover */
 }
 
 #mainPage #aboutPage #homeButt {
@@ -113,18 +84,4 @@
     text-underline-offset: 9px;
 }
 
-/* Loading spinner */
-.dark-mode #mainPage .loading-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.dark-mode #mainPage .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #f9f9f9;
-}
-
-/* Content styling */
-#mainPage .content {
-    padding: 20px;
-}
 

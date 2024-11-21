@@ -189,12 +189,10 @@
     border: 1px solid #bbb;
 }
 
-.dark-mode {
-    --primary-color: #007bff;
-    --secondary-color: #555;
-    --tertiary-color: #444;
-    --hover-color: #555;
-    --text-color: #ddd;
-    --header-bg: #0056b3;
-    --row-bg-alt: #3a3a3a;
+@media only screen and (max-width: 900px) {
+    #mainPage #container #bios > * {
+        flex: 1 0 50%;
+    }
+
+    
 }

@@ -3,8 +3,6 @@ const toggleMode = async () => {
 
     const isDarkMode = !document.querySelector('body').classList.contains('dark-mode')
 
-    loading()
-
     const response = await fetch('/profile/dark-mode', {
         method: "post",
         credentials: "same-origin",
@@ -16,7 +14,6 @@ const toggleMode = async () => {
         })
     })
 
-    loadingDone()
 
     console.log("DOES IT HAVE IT", response, document.querySelector('body').classList.contains('dark-mode'))
 
@@ -34,11 +31,9 @@ const toggleMode = async () => {
 document.getElementById("dark-mode-icon").onclick = async () => { await toggleMode(); };
 
 
-const isDarkMode = async () => {
-    loading();  
-    
-    const startTime = performance.now()
-    
+const isDarkMode = async () => {    
+
+    const loading = new Loading()
     
     const darkModeResponse = await fetch('/profile/dark-mode', {
         method: 'get',
@@ -57,7 +52,7 @@ const isDarkMode = async () => {
         document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-moon")
     } else { document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-sun") }
     
-    loadingDone();
+    loading.destroy()
     
     try {
         document.querySelector('#dark-mode-input').checked = darkMode;

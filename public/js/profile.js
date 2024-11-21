@@ -16,6 +16,8 @@ document.getElementById("dark-mode-input").onclick = async () => { await toggleM
 
 const start = async () => {
 
+    const loading = new Loading()
+
     const requestHeaders = {
         "Content-Type": "application/json"
     };
@@ -47,7 +49,7 @@ const start = async () => {
     LastName.placeholder = jsonData.LastName
     Username.placeholder = jsonData.Username
 
-    loadingDone()
+    loading.destroy()
 
     document.querySelector(`#form`).addEventListener("submit", async (e) => {
         e.preventDefault()
@@ -95,8 +97,7 @@ const start = async () => {
 
         console.log(formData.language)
 
-        loading()
-
+        const loading = new Loading()
 
         const response = await fetch('/update-details', {
             method: "post",
@@ -105,6 +106,7 @@ const start = async () => {
             body: JSON.stringify(formData)
         })
 
+        loading.destroy()
 
         if (response.status === 409) { message.textContent = (await response.json())["error"]; return }
 

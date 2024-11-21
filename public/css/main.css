@@ -1,3 +1,5 @@
+/*Code for carousel*/
+
 #carousel {
     position: relative;
     max-width: 800px;
@@ -27,7 +29,7 @@ button {
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: #ffffff;
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -43,13 +45,13 @@ button {
 }
 
 #globe {
-    max-width: 350px;
+    max-width: 270px;
 }
 
 #plant {
-    max-width: 300px;
+    max-width: 220px;
 }
 
 #handGlobe {
-    max-width: 290px;
+    max-width: 210px;
 }

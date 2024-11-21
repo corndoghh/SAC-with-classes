@@ -22,12 +22,14 @@
                 </div>
             </nav>
             <div class="user-icons">
+                <a href="javascript:void(0)"><i id="dark-mode-icon"></i></a>
                 <a href="/profile" title="Settings"><i class="fas fa-cogs"></i></a>
                 <% if (!loggedIn) { %>
                 <a href="/signup" title="Sign Up"><i class="fas fa-user-plus"></i></a>
                 <% } else { %>
                 <a href="/logout" title="Logout" ><i class="fa-solid fa-right-from-bracket"></i></a>
                 <% } %>
+
             </div>
         </div>
     </header>

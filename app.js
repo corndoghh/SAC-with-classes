@@ -153,7 +153,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about-us', (req, res) => {
-    res.render("ourInfo.ejs")
+    res.render("about-us.ejs")
 })
 
 app.get('/sign-up', reqNoAuth, authentication)

@@ -22,10 +22,16 @@ const toggleMode = async () => {
 
     document.querySelector('body').classList.toggle('dark-mode')
 
+    if (isDarkMode) { document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-moon") }
+    else { document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-sun") }
+
     console.log("Does it have it now?", document.querySelector('body').classList.contains('dark-mode'))
     
 
 }
+
+
+document.getElementById("dark-mode-icon").onclick = async () => { await toggleMode(); };
 
 
 const isDarkMode = async () => {
@@ -48,7 +54,8 @@ const isDarkMode = async () => {
     
     if (darkMode && !document.querySelector('body').classList.contains('dark-mode')) {
         document.querySelector('body').classList.add('dark-mode');
-    }
+        document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-moon")
+    } else { document.querySelector('#dark-mode-icon').setAttribute("class", "fa-regular fa-sun") }
     
     loadingDone();
     

@@ -11,9 +11,8 @@ const confirmDelete = () => {
     }
 }
 
-document.getElementById("dark-mode-input").onclick = async () => {
-    await toggleMode();
-};
+document.getElementById("dark-mode-input").onclick = async () => { await toggleMode(); };
+
 
 const start = async () => {
 

@@ -35,4 +35,7 @@ body {
 img{
     width: 45%;
     float: left;
+    border-radius: 8px;
+    border-color: #EEDBBE;
+    border-left: 3px;
 }

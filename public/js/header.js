@@ -15,3 +15,18 @@ sidebarToggle.addEventListener('click', () => {
 
 })
 
+const handleScreenChange = (e) => {
+
+    const header = document.querySelector('#includes header')
+
+    if(window.innerWidth >= 900) {
+        console.log(window.innerWidth)
+        header.style.width = '100%'
+    } else {
+        header.style.width = '0px'
+
+        
+    }
+}
+
+window.matchMedia("(min-width: 900px)").addEventListener("change", handleScreenChange);

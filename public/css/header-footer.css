@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Verdana, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -40,7 +40,7 @@ body {
 }
 
 #includes header {
-    background-color: #2c3e50;
+    background-color: #6a994e;
     color: white;
     padding: 50px 40px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -72,7 +72,7 @@ body {
 }
 
 #includes .nav-links a:hover {
-    color: #1abc9c;
+    color: #95d5b2;
     /* Teal accent color */
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 #includes .dropbtn {
-    background-color: #2c3e50;
+    background-color: #6a994e;
     color: #ecf0f1;
     border: none;
     cursor: pointer;
@@ -135,7 +135,7 @@ body {
 /* Footer styles */
 #includes footer {
     position: sticky;
-    background-color: #2c3e50;
+    background-color: #6a994e;
     color: white;
     text-align: center;
     padding: 20px;

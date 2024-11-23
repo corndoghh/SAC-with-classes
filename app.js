@@ -155,6 +155,18 @@ app.get('/', (req, res) => {
 app.get('/about-us', (req, res) => {
     res.render("about-us.ejs")
 })
+app.get('/faq', (req, res) => {
+    res.render("faq.ejs")
+})
+app.get('/climateChange', (req, res) => {
+    res.render("climateChange.ejs")
+})
+app.get('/susCities', (req, res) => {
+    res.render("susCities.ejs")
+})
+app.get('/zeroHunger', (req, res) => {
+    res.render("zeroHunger.ejs")
+})
 
 app.get('/sign-up', reqNoAuth, authentication)
 app.get('/signup', reqNoAuth, (req, res) => res.redirect('/sign-up'))

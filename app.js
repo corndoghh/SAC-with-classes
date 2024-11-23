@@ -159,13 +159,13 @@ app.get('/faq', (req, res) => {
     res.render("faq.ejs")
 })
 app.get('/climateChange', (req, res) => {
-    res.render("climateChange.ejs")
+    res.render("goals/climateChange.ejs")
 })
 app.get('/susCities', (req, res) => {
-    res.render("susCities.ejs")
+    res.render("goals/susCities.ejs")
 })
 app.get('/zeroHunger', (req, res) => {
-    res.render("zeroHunger.ejs")
+    res.render("goals/zeroHunger.ejs")
 })
 
 app.get('/sign-up', reqNoAuth, authentication)

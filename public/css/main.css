@@ -1,30 +1,30 @@
 /*Code for carousel*/
 
-#carousel {
+#mainPage #carousel {
     position: relative;
     max-width: 800px;
     margin: auto;
     overflow: hidden;
 }
 
-#carouselIn {
+#mainPage #carouselIn {
     display: flex;
 }
 
-#slide {
+#mainPage #slide {
     flex: 0 0 auto;
     width: 100%;
     transition: transform 0.5s ease;
 }
 
-#slide img {
+#mainPage #slide img {
     width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-button {
+#mainPage button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -36,22 +36,22 @@ button {
     z-index: 1;
 }
 
-#previous {
+#mainPage #previous {
     left: 0;
 }
 
-#next {
+#mainPage #next {
     right: 0;
 }
 
-#globe {
+#mainPage #globe {
     max-width: 270px;
 }
 
-#plant {
+#mainPage #plant {
     max-width: 220px;
 }
 
-#handGlobe {
+#mainPage #handGlobe {
     max-width: 210px;
 }

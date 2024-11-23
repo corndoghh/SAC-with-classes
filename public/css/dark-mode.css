@@ -1,0 +1,12 @@
+:root {
+    --background-colour: #0D1017;
+    --overlay-colour: #242936;
+    --main-color: #131721;
+}
+
+
+.dark-mode #mainPage, .dark-mode {
+    background-color: var(--background-colour);
+    color: #f9f9f9;
+}
+

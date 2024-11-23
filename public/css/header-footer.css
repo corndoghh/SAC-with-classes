@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* =============== Dark Mode =============== */
 
-.dark-mode #mainPage, .dark-mode {
-    background-color: #333;
-    color: #f9f9f9;
-}
-
-/* =============== Dark Mode =============== */
 
 * {
     margin: 0;
@@ -24,6 +17,7 @@ body {
     min-height: 100vh;
     background-color: #f4f7fc;
 }
+
 
 #mainPage {
     flex: 1;
@@ -64,9 +58,12 @@ body {
     gap: 20px;
 }
 
-#includes .nav-links a {
+#includes a {
     color: #ecf0f1;
     text-decoration: none;
+}
+
+#includes .nav-links a {
     font-size: 1.1em;
     transition: color 0.3s;
 }
@@ -81,7 +78,7 @@ body {
 }
 
 #includes .dropbtn {
-    background-color: #6a994e;
+    background-color: transparent;
     color: #ecf0f1;
     border: none;
     cursor: pointer;
@@ -222,6 +219,29 @@ body {
     }
 }
 
+/* =============== Dark Mode =============== */
+
+.dark-mode #includes header, .dark-mode #includes footer {
+    background-color: var(--overlay-colour);
+
+}
+
+
+.dark-mode #sidebar-toggle {
+    color: #f2f2f2;
+}
+
+
+
+/* =============== Dark Mode =============== */
+
+
+
+
+
+
+
+
 /* Hamburger */
 
 #sidebar-toggle {
@@ -235,22 +255,20 @@ body {
     text-decoration: none;
 }
 
-.dark-mode #sidebar-toggle {
-    color: #f2f2f2;
-}
 
 
 @media only screen and (max-width: 900px) {
 
 
     #includes header {
+        border-right: #f2f2f2 none 0.1px;
         height: 100%;
         width: 0px;
         position: fixed;
         padding: 0;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: #111 !important;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;

@@ -123,6 +123,10 @@
     border-top: 4px solid #f9f9f9;
 }
 
+.dark-mode #mainPage {
+    background-color: var(--background-colour);
+}
+
 /* Content styling */
 #mainPage .content {
     padding: 20px;

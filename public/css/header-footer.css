@@ -228,7 +228,7 @@ body {
 
 
 .dark-mode #sidebar-toggle {
-    color: #f2f2f2;
+    color: #f2f2f2 !important;
 }
 
 
@@ -244,10 +244,12 @@ body {
 
 /* Hamburger */
 
+
+
 #sidebar-toggle {
+    color: #555 !important;
     visibility: hidden;
     position: sticky;
-    color: #555;
     margin-right: 20px;
     margin-top: 10px;
     font-size: 2em;

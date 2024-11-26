@@ -1,0 +1,61 @@
+<%- include("includes/header.ejs") %>
+<link rel="stylesheet" href="css/blogs.css">
+<script src="js/dark-mode.js" defer></script>
+<script src="js/global-functions.js"></script>
+<script src="js/blogs.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div id="mainPage">
+    <section id="container">
+        <section id="header">
+            <h1>Blogs</h1>
+            <% if (locals.loggedIn) { %>
+                <a id="create-blog" href="/blog/create"><i class="fa-solid fa-plus"></i></a>
+            <% } %>
+        </section>
+        <hr class="solid">
+        <section id="carousel">
+            <button id="previous"><i class="fa-solid fa-arrow-left"></i></button>
+            <div id="carouselIn">
+                <!-- <article id="slide">
+                    <h3>The Importance of Renewable Energy in Achieving Sustainability</h3>
+                    <a href="javascript:void(0)">John Smith</a>
+                    <p>Explains how renewable energy sources play a vital role in fighting climate change and fostering sustainability.</p>
+                    <img src="assets/globe.jpg" alt="">
+                </article>
+                <article id="slide">
+                    <h3>Zero Waste: A Practical Approach for Sustainable Living</h3>
+                    <a href="javascript:void(0)">Sarah Lee</a>
+                    <p>Introduces the zero waste lifestyle and how small daily changes can help reduce waste and promote sustainability.</p>
+                    <img src="assets/handsWithPlant.jpg" alt="">
+                </article>
+                <article id="slide">
+                    <h3>Water Conservation in the Home: Easy Steps to Save Water</h3>
+                    <a href="javascript:void(0)">Emily Clark</a>
+                    <p>Offers practical tips for reducing water consumption at home, helping to conserve a vital resource.</p>
+                    <img src="assets/handsWithGlobe.jpg" alt="">
+                </article>
+                <article id="slide">
+                    <h3>How Planting Trees Can Help Fight Climate Change</h3>
+                    <a href="javascript:void(0)">Mark Thompson</a>
+                    <p>Highlights the environmental benefits of planting trees and how they contribute to combatting climate change.</p>
+                    <img src="assets/handsWithGlobe.jpg" alt="">
+                </article>
+                <article id="slide">
+                    <h3>The Role of Public Transportation in Sustainable Cities</h3>
+                    <a href="javascript:void(0)">Anna Martinez</a>
+                    <p>Explains the environmental and social benefits of improving public transportation systems in cities.</p>
+                    <img src="assets/globe.jpg" alt="">
+                </article>
+                <article id="slide">
+                    <h3>Sustainable Agriculture: The Key to a Healthier Future</h3>
+                    <a href="javascript:void(0)">Robert Harris</a>
+                    <p>Discusses how sustainable farming practices can ensure food security and environmental health in the long term.</p>
+                    <img src="assets/handsWithPlant.jpg" alt="">
+                </article> -->
+            </div>
+            <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </section>
+    </section>
+
+</div>
+<%- include("includes/footer.ejs") %>

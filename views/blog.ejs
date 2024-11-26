@@ -1,0 +1,19 @@
+<%- include("includes/header.ejs") %>
+<link rel="stylesheet" href="css/blog.css">
+<div id="mainPage">
+    <div id="container">
+        <article>
+            <section >
+                <h1><%= blogData.title %></h1>
+                <% if (blogData.isOwner) { %>
+                    <a href=/blog/edit?UUID=<%= blogData.UUID %>><i class="fa-solid fa-pen-to-square"></i></a>
+                <% } %>
+            </section>
+            <a href="javascript:void(0)"><%= blogData.FirstName %> <%= blogData.LastName %></a>
+            <p><%= blogData.content %></p> 
+            <img src="assets/handsWithGlobe.jpg" alt="">
+        </article>
+    </div>
+
+</div>
+<%- include("includes/footer.ejs") %>

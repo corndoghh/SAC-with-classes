@@ -1,6 +1,5 @@
 const express = require("express")
 const session = require("express-session")
-const { getUser, doesUserExist, addUser } = require("./scripts/UserManager")
 const UserError = require("./Errors/UserError")
 const UserErrorTypes = require("./Errors/UserErrorTypes")
 const FileStore = require('session-file-store')(session);
@@ -8,6 +7,11 @@ const multer = require('multer');
 const path = require('path')
 const fs = require('fs')
 const url = require('url');
+const BlogManager = require("./scripts/BlogManager")
+const UserManager = require("./scripts/UserManager");
+const BlogError = require("./Errors/BlogError");
+const BlogErrorTypes = require("./Errors/BlogErrorTypes");
+const Blog = require('./scripts/BlogManager')
 
 
 const app = express();
@@ -27,6 +31,8 @@ app.use(session({
     saveUninitialized: true
 }))
 
+const blogManager = new BlogManager()
+const userManager = new UserManager()
 
 app.listen(PORT, () => {
     console.log("KYS NOWWW")
@@ -50,14 +56,13 @@ app.use((req, res, next) => {
 
 //Error handling Middleware
 
-const ErrorHandling = (err, res) => {
-    if (err instanceof UserError) {
-        return res.status(err.statusCode).json({ error: err.message });
-    }
-
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
-}
+/**
+ * 
+ * @param {UserError, BlogError} err 
+ * @param {*} res 
+ * @returns {}
+ */
+const ErrorHandling = (err, res) => { return res.status(err.statusCode).json({ error: err.message }); }
 
 //functions
 
@@ -65,7 +70,7 @@ const notFound = (req, res) => { res.status(404).send("404 not found") }
 
 const authentication = async (req, res) => {
     if (req.session.loggedIn) { return ErrorHandling(new UserError(UserErrorTypes.ALREADY_LOGGED_IN, 409), res); }
-    const {token, email, tempCode} = req.query
+    const { token, email, tempCode } = req.query
 
     const urlPath = url.parse(req.url).pathname
 
@@ -74,14 +79,14 @@ const authentication = async (req, res) => {
     const type = urlPath === "/login" ? "l" : urlPath === "/sign-up" ? "s" : urlPath === "/forgot-password" ? "f" : urlPath === "/add-account" ? "a" : "r"
 
     if (
-        type === "r" && 
+        type === "r" &&
         ((token === undefined || email === undefined || tempCode === undefined) ||
-        await getHashedToken(email) !== token ||
-        !await doesPropertyExist(email, "tempCode") ||
-        await getUserValue(email, "tempCode") !== tempCode)
+            await getHashedToken(email) !== token ||
+            !await doesPropertyExist(email, "tempCode") ||
+            await getUserValue(email, "tempCode") !== tempCode)
     ) { res.json({ "Error": "Invalid password reset link" }); return }
 
-    res.render("form-page.ejs", {type, token, email, tempCode, return_url})
+    res.render("form-page.ejs", { type, token, email, tempCode, return_url })
 }
 
 const reqNoAuth = (req, res, next) => {
@@ -99,7 +104,7 @@ const reqData = (req, res, next) => {
 
 const reqUser = async (req, res, next) => {
     if ((await Promise.all((Object.values(req.body).length !== 0 ? Object.values(req.body) : Object.values(req.query).length !== 0 ? Object.values(req.query) : [req.session.UUID]).map(async (x) => {
-        if (await doesUserExist(x)) { return true }
+        if (await userManager.doesUserExist(x)) { return true }
     }))).filter((x) => x !== undefined)[0]) { next(); return }
 
     return ErrorHandling(new UserError(UserErrorTypes.USER_NOT_EXIST, 404), res);
@@ -108,6 +113,39 @@ const reqUser = async (req, res, next) => {
 const reqAuth = async (req, res, next) => {
     if (req.session.loggedIn) { next(); return }
     res.redirect(`/login?return_url=${req.originalUrl}`)
+}
+
+const reqBlog = async (req, res, next) => {
+    const isGetMethod = req.method === 'GET';
+    const { UUID } = isGetMethod ? req.query : req.body;
+
+    // ===== Data Validation ===== 
+
+    if (UUID === undefined) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_REQUEST, 409), res) }
+
+
+    if (!(await blogManager.doesBlogExist(UUID))) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_BLOG_HASH, 404), res) }
+
+    // ===== Data Validation ===== 
+
+    next()
+
+}
+
+const ownBlog = async (req, res, next) => {
+    const isGetMethod = req.method === 'GET';
+    const { UUID } = isGetMethod ? req.query : req.body;
+
+
+    const blog = await blogManager.getBlog(UUID)
+
+    // ===== Ownership verification =====
+
+    if (blog.getAuthor() !== req.session.UUID) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_BLOG_OWNERSHIP, 403), res) }
+
+
+    next()
+
 }
 
 const logout = (req, res) => {
@@ -155,18 +193,27 @@ app.get('/', (req, res) => {
 app.get('/about-us', (req, res) => {
     res.render("about-us.ejs")
 })
+
 app.get('/faq', (req, res) => {
     res.render("faq.ejs")
 })
-app.get('/climateChange', (req, res) => {
-    res.render("goals/climateChange.ejs")
+
+app.get('/goals/climate-change', (req, res) => {
+    res.render('goals/climate-change.ejs')
 })
-app.get('/susCities', (req, res) => {
-    res.render("goals/susCities.ejs")
+
+app.get('/goals/sustainable-cities', (req, res) => {
+    res.render('goals/sustainable-cities.ejs')
 })
-app.get('/zeroHunger', (req, res) => {
-    res.render("goals/zeroHunger.ejs")
+
+app.get('/goals/zero-hunger', (req, res) => {
+    res.render('goals/zero-hunger.ejs')
 })
+
+app.get('/blogs', (req, res) => {
+    res.render('blogs.ejs')
+})
+
 
 app.get('/sign-up', reqNoAuth, authentication)
 app.get('/signup', reqNoAuth, (req, res) => res.redirect('/sign-up'))
@@ -175,6 +222,7 @@ app.get('/login', reqNoAuth, authentication)
 app.get('/forgot-password', reqNoAuth, authentication)
 app.get('/reset-password', reqNoAuth, authentication)
 
+
 app.get('/logout', reqUser, reqAuth, logout)
 
 app.get('/profile', reqAuth, (req, res) => {
@@ -182,7 +230,7 @@ app.get('/profile', reqAuth, (req, res) => {
 })
 
 app.get('/profile/details', reqAuth, async (req, res) => {
-    const user = await getUser(req.session.UUID)
+    const user = await userManager.getUser(req.session.UUID)
 
     const Username = user.getValue("Username")
     const FirstName = user.getValue("FirstName")
@@ -215,6 +263,53 @@ app.get('/profile/dark-mode', (req, res) => {
     })
 })
 
+app.get('/:blog', reqData, async (req, res) => {
+    const { UUID } = req.query
+
+    if (UUID === undefined) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_REQUEST, 409), res) }
+
+
+    if (UUID.length === 0 && req.headers["content-type"] === 'application/json') { res.json((await blogManager.getBlogs()).map((blog) => blog.getUUID())); return }
+
+    if (!(await blogManager.doesBlogExist(UUID))) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_BLOG_HASH, 404), res) }
+
+    const blog = await blogManager.getBlog(UUID)
+
+
+    const blogData = {
+        ...blog.getAllValues(),
+        ...(await blog.getUsersname()),
+        ...{isOwner: blog.getAuthor() === req.session.UUID}
+    }
+
+    if (req.headers["content-type"] === 'application/json') {
+        res.json(blogData)
+        return
+    }
+
+    res.render('blog.ejs', {blogData})
+})
+
+app.get('/blog/edit', reqData, reqAuth, reqBlog, ownBlog, async (req, res) => {
+    const { UUID } = req.query
+
+    const blog = await blogManager.getBlog(UUID)
+
+
+    const blogData = {
+        ...blog.getAllValues(),
+        ...(await blog.getUsersname()),
+        ...{isOwner: blog.getAuthor() === req.session.UUID}
+    }
+
+    res.render('edit-blog.ejs', {blogData})
+
+}) 
+
+app.get('/blog/create', reqAuth, async (req, res) => {
+    res.render('edit-blog.ejs', {})
+})
+
 
 //404 catch
 app.get("*", notFound)
@@ -222,16 +317,16 @@ app.get("*", notFound)
 //post
 
 app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
-    const {Username, Email, Password, returnUrl} = req.body
+    const { Username, Email, Password, returnUrl } = req.body
 
-    if (!((Username || Email) && Password)) { res.json( { "Error": "Invalid data submitted" }); return }
+    if (!((Username || Email) && Password)) { res.json({ "Error": "Invalid data submitted" }); return }
     const identifier = Username ? Username : Email
 
-    const user = await getUser(identifier)
+    const user = await userManager.getUser(identifier)
 
     if (!user.hasAccount() || !user.comparePasswordHash(Password)) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_CREDENTIALS, 400), res); }
 
-    
+
     //if (!(await doesUserHaveAccount(identifier)) || !(await isPasswordCorrect(identifier, Password))) { res.send("Incorrect Username or Password"); return } 
 
     await user.login(req)
@@ -240,7 +335,11 @@ app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
 
 
     req.session.save(() => {
-        res.redirect(`${returnUrl !== '' ? returnUrl : '/'}`)
+        if (returnUrl) {
+            res.redirect(`${returnUrl !== '' ? returnUrl : '/'}`)
+            return
+        }
+        res.redirect('/')
     })
     //DO TO what to do with clients after successfull authentication...
     //res.redirect("/")
@@ -257,24 +356,24 @@ app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
 })
 
 app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
-    let {Email, FirstName, MiddleNames, LastName, Comment, Username, Password, returnUrl} = req.body
+    let { Email, FirstName, MiddleNames, LastName, Comment, Username, Password, returnUrl } = req.body
     console.log(req.body)
     if (Email === undefined || FirstName === undefined || LastName === undefined) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_SIGNUP_CREDENTIALS, 409), res); }
 
     MiddleNames = MiddleNames ? MiddleNames : []
 
-    if (await doesUserExist(Email)) { return ErrorHandling(new UserError(UserErrorTypes.USER_EXISTS, 409), res); }
+    if (await userManager.doesUserExist(Email)) { return ErrorHandling(new UserError(UserErrorTypes.USER_EXISTS, 409), res); }
 
-    
+
     // TODO - await sendConfirmationEmail(Email)
 
     //TODO - handle newsletter sign up 
-    if (Username === '' || Password === '') { await addUser(Email, FirstName, MiddleNames, LastName, Comment); res.send("You are signed up for the newsletter"); return }
+    if (Username === '' || Password === '') { await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment); res.send("You are signed up for the newsletter"); return }
 
-    if (await doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res); }
+    if (await userManager.doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res); }
 
-    await addUser(Email, FirstName, MiddleNames, LastName, Comment)
-    const user = await getUser(Email)
+    await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment)
+    const user = await userManager.getUser(Email)
 
     await user.createAccount(Username, Password)
 
@@ -287,14 +386,14 @@ app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
 })
 
 app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
-    const {Email, Username, Password} = req.body
+    const { Email, Username, Password } = req.body
     if (Email === undefined || Username === undefined || Password === undefined) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_SIGNUP_CREDENTIALS, 409), res); }
-    
-    const user = await getUser(Email)
+
+    const user = await userManager.getUser(Email)
 
     if (user.hasAccount()) { return ErrorHandling(new UserError(UserErrorTypes.ACCOUNT_ALREADY_EXISTS, 409), res); }
 
-    if (await doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res); }
+    if (await userManager.doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res); }
 
     await user.createAccount(Username, Password)
 
@@ -308,9 +407,9 @@ app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
 
 
 app.post('/update-details', reqAuth, reqData, async (req, res) => {
-    const user = await getUser(req.session.UUID)
-    
-    const updatedInfo = Object.fromEntries(Object.entries(req.body).filter(([i,x]) => x !== ''))
+    const user = await userManager.getUser(req.session.UUID)
+
+    const updatedInfo = Object.fromEntries(Object.entries(req.body).filter(([i, x]) => x !== ''))
 
     console.log(updatedInfo)
 
@@ -326,7 +425,7 @@ app.post('/update-details', reqAuth, reqData, async (req, res) => {
     if (updatedInfo.hasOwnProperty('TwoFactor')) { await user.setValue('TwoFactor', updatedInfo["TwoFactor"]) }
 
     if (updatedInfo.hasOwnProperty('Username')) {
-        if (await doesUserExist(updatedInfo['Username'])) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res) }
+        if (await userManager.doesUserExist(updatedInfo['Username'])) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res) }
         await user.setValue('Username', updatedInfo["Username"])
     }
 
@@ -354,6 +453,55 @@ app.post('/profile/dark-mode', reqData, (req, res) => {
     })
 })
 
+
+app.post('/blog/create', reqAuth, reqData, async (req, res) => {
+
+    const { title, content, description } = req.body
+
+    const blogData = Object.entries({title,content,description}).filter(([i, x]) => x !== undefined)
+
+
+    // ===== Data Validation ===== 
+
+    if (blogData.length === 0) {
+        return ErrorHandling(new BlogError(BlogErrorTypes.USER_MISSING_DATA, 409), res)
+    }
+
+    // ===== Data Validation =====
+
+    const blog = await blogManager.addBlog(req.session.UUID, title, content, description)
+
+    if (!blog) { return ErrorHandling(new BlogError(BlogErrorTypes.BLOG_ALREADY_EXISTS, 409), res) }
+
+    res.redirect('/blog?UUID='+blog.getUUID())
+})
+
+app.post('/blog/delete', reqAuth, reqData, reqBlog, ownBlog, async (req, res) => { const response = await blogManager.removeBlog(req.body.UUID); res.json({'success': response})})
+
+app.post('/blog/edit', reqAuth, reqData, reqBlog, ownBlog, async (req, res) => {
+    const { title, content, description, UUID } = req.body;
+
+    console.log(content)
+
+
+    const edit = Object.entries({title,content,description}).filter(([i, x]) => x !== undefined)
+    
+    // ===== Data Validation ===== 
+
+    if (edit.length === 0) {
+        return ErrorHandling(new BlogError(BlogErrorTypes.USER_MISSING_DATA, 409), res)
+    }
+
+    // ===== Data Validation ===== 
+
+    
+    const blog = await blogManager.getBlog(UUID)
+    await blog.setValues(Object.fromEntries(edit))
+    console.log('/blog?UUID='+UUID)
+    res.redirect('/blog?UUID='+UUID)
+})
+
+
 app.post('/logout', reqUser, reqAuth, logout)
 
 
@@ -365,25 +513,39 @@ app.post("*", notFound)
 //test
 
 const test = async () => {
-    // const user = await getUser("the-caretaker")
+    // const user = await userManager.getUser("the-caretaker")
 
-    // console.log(await doesUserExist("the-caretaker"), await doesUserExist("the-caretakerbob"))
+    // console.log(await userManager.doesUserExist("the-caretaker"), await userManager.doesUserExist("the-caretakerbob"))
 
     // console.log(user)
-    
+
     // await user.addProperty("FirstName")
-    
+
     // await user.setValue("FirstName", "nowKYS")
     // await user.setValue("Some", 12)
     // console.log(user.getValue('Email'))
 
-    await addUser("personal@harleyhugh.es", "endyourslv", ["k", "Another", "Name"], "Dylan", "MHM")
-    
-    const user = await getUser("personal@harleyhugh.es")
-    
-    user.createAccount("genusername", "aaaamog")
+    // await userManager.addUser("personal@harleyhugh.es", "endyourslv", ["k", "Another", "Name"], "Dylan", "MHM")
 
-    console.log(await user.comparePasswordHash("aaaamog"))
+    // const user = await userManager.getUser("personal@harleyhugh.es")
 
+    // user.createAccount("genusername", "aaaamog")
+
+    // console.log(await user.comparePasswordHash("aaaamog"))
+
+
+    const user = await userManager.getUser('c50c99df-66fa-4d5d-9041-220ff0f8b8c7')
+
+    const usersBlogs = await blogManager.getUsersBlogs(user)
+
+    console.log(await blogManager.addBlog(user, 'NEW', 'very NEW', 'holy shit'), "a")
+
+    usersBlogs.forEach((blog) => console.log(blog.getAllValues()));
+
+    //await blogManager.removeBlog(usersBlogs[1]);
+
+    (await blogManager.getUsersBlogs(user)).forEach((blog) => console.log(blog.getAllValues()))
 
 }
+
+test()

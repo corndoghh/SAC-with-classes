@@ -5,7 +5,6 @@
     align-items: center;
 }
 
-/* Light Mode Styles */
 #mainPage #container {
     background-color: #fff;
     margin: 100px;
@@ -22,21 +21,18 @@
     row-gap: 50px;
 }
 
-/* Dark Mode Styles */
 .dark-mode #mainPage #container {
     background-color: var(--main-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     color: #f5f5f5;
 }
 
-/* Shared Container Elements */
 #mainPage #container > * {
     align-content: center;
     padding: 20px;
     flex: 1 1 100px;
 }
 
-/* Headings */
 #mainPage #container h1 {
     text-align: center;
     font-size: 2em;
@@ -47,7 +43,6 @@
     color: #f9f9f9;
 }
 
-/* Bios Section */
 #mainPage #container #bios {
     display: flex;
     justify-content: center;
@@ -77,7 +72,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Article Styling */
 #mainPage #container #bios article > * {
     padding: 20px;
     flex: 1 0 10%;
@@ -94,4 +88,18 @@
     width: 92%;
     transform: translate(4%,0);
     border: 1px solid #bbb;
+}
+
+@media only screen and (max-width: 900px) {
+    #mainPage #container #bios > * {
+        flex: 1 0 50%;
+    }
+
+    #mainPage #container {
+        margin: 10px;
+        margin-top: 5px;
+        
+    }
+
+    
 }

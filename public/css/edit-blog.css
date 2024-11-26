@@ -1,0 +1,117 @@
+#mainPage body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#mainPage #editPage {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+#mainPage #editContainer {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.dark-mode #mainPage #editForm label, .dark-mode #mainPage #editContainer h1, .dark-mode #mainPage #editContainer, .dark-mode #mainPage #editForm textarea, .dark-mode #mainPage #editForm input {
+    background-color: #242936;
+    color: #f2f2f2;
+    border: none;
+}
+
+
+#mainPage #editContainer h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#mainPage #editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#mainPage #editForm label {
+    font-weight: bold;
+    color: #555;
+}
+
+#editForm input[type="text"],
+#editForm textarea,
+#mainPage #editForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#editForm input[type="text"]:focus,
+#mainPage #editForm textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#mainPage #editForm textarea {
+    resize: none;
+}
+
+#mainPage #formButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#mainPage #formButtons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#mainPage #formButtons #saveBtn {
+    background-color: #007bff;
+}
+
+#mainPage #formButtons #saveBtn:hover {
+    background-color: #0056b3;
+}
+
+#mainPage #formButtons #cancelBtn {
+    background-color: #dc3545;
+}
+
+#mainPage #formButtons #cancelBtn:hover {
+    background-color: #a71d2a;
+}
+
+@media (max-width: 900px) {
+     #editContainer {
+        padding: 20px;
+    }
+
+     #formButtons {
+        flex-direction: column;
+    }
+}

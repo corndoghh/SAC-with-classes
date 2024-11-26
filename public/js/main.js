@@ -1,50 +1,28 @@
 let slideIndex = 0;
-let intervalId; // Variable to store setInterval ID
+let intervalId;
 
-function moveSlide(n) {
-    slideIndex += n;
-    showSlide(slideIndex);
-}
-
-function showSlide(n) {
+const showSlide = (n) => {
     const slides = document.querySelectorAll('#slide');
-    if (n >= slides.length) {
-        slideIndex = 0;
-    } else if (n < 0) {
-        slideIndex = slides.length - 1;
-    }
-    slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${slideIndex * 100}%)`;
+    slideIndex = n >= slides.length - 3 ? 0 : n < 0 ? slides.length - 4 : slideIndex
+    slides.forEach((slide) => { 
+        slide.classList.remove('firstSlide')
+        slide.style.transform = `translateX(-${slideIndex * 100}%)`
     });
+    slides[slideIndex].classList.add('firstSlide')
 }
 
-// Function to start autoplay
-function startAutoplay() {
-    intervalId = setInterval(() => {
-        moveSlide(1);
-    }, 5000); // Change slide every 3 seconds (adjust as needed)
-}
+const moveSlide = (n) => { slideIndex += n; showSlide(slideIndex); }
 
-// Function to stop autoplay
-function stopAutoplay() {
-    clearInterval(intervalId);
-}
+const startAutoplay = () => { intervalId = setInterval(() => { moveSlide(1); }, 3000) };
 
-// Start autoplay when the page loads
+const stopAutoplay = () => clearInterval(intervalId);
+
 startAutoplay();
 
-// Stop autoplay when the carousel is hovered
 document.querySelector('#carousel').addEventListener('mouseenter', stopAutoplay);
 
-// Restart autoplay when the carousel is not hovered
 document.querySelector('#carousel').addEventListener('mouseleave', startAutoplay);
 
+document.querySelector('#previous').addEventListener('click', () => moveSlide(-1));
 
-
-document.querySelector('#previous').addEventListener('click', () => {
-    moveSlide(-1);
-});
-
-document.querySelector('#next').addEventListener('click', () => {
-    moveSlide(1);
-});
+document.querySelector('#next').addEventListener('click', () => moveSlide(1));

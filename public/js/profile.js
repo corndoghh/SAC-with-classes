@@ -15,7 +15,7 @@ document.getElementById("dark-mode-input").onclick = async () => { await toggleM
 
 
 const start = async () => {
-
+    
     const loading = new Loading()
 
     const requestHeaders = {

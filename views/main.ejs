@@ -2,38 +2,43 @@
 
 <div id="mainPage">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="js/dark-mode.js" defer></script>
     <script src="js/global-functions.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <body>
         <section id="container">
             <section id="carousel">
+                <button id="previous"><i class="fa-solid fa-arrow-left"></i></button>
                 <div id="carouselIn">
-                    <div id="slide"><img id = "globe" src="assets/globe.jpg" alt="Globe"></div>
+                    <div id="slide" class="firstSlide"><img id = "globe" src="assets/globe.jpg" alt="Globe"></div>
                     <div id="slide"><img id = "plant" src="assets/handsWithPlant.jpg" alt="Hands with plant"></div>
                     <div id="slide"><img id = "handGlobe" src="assets/handsWithGlobe.jpg" alt="Hands with globe"></div>
+                    <div id="slide"><img id = "plant" src="assets/handsWithPlant.jpg" alt="Hands with plant"></div>
+                    <div id="slide"><img id = "handGlobe" src="assets/handsWithGlobe.jpg" alt="Hands with globe"></div>
+                    <div id="slide"><img id = "globe" src="assets/globe.jpg" alt="Globe"></div>
+                    <div id="slide"><img id = "plant" src="assets/handsWithPlant.jpg" alt="Hands with plant"></div>
+                    <div id="slide"><img id = "handGlobe" src="assets/handsWithGlobe.jpg" alt="Hands with globe"></div>       
+                    <div id="slide"><img id = "globe" src="assets/globe.jpg" alt="Globe"></div>
                 </div>
-                <button id="previous">&#10094;</button>
-                <button id="next">&#10095;</button>
+                <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
             </section>
             <section id="goals">
                 <article>
                     <h3>Climate Change</h3>
                     <p>Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi</p>
-                    <img id = "globe" src="assets/globe.jpg" alt="Globe">
+                    <a href="/goals/climate-change"><img id = "globe" src="assets/globe.jpg" alt="Globe"></a>
                     
                 </article>
                 <article>
                     <h3>Zero Hunger</h3>
                     <p>Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi</p>
-                    <img id = "plant" src="assets/handsWithPlant.jpg" alt="Hands with plant">
+                    <a href="/goals/zero-hunger"><img id = "plant" src="assets/handsWithPlant.jpg" alt="Hands with plant"></a>
                 </article>
                 <article>
                     <h3>Sustainable Cities and Communities</h3>
                     <p>Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi</p>
-                    <img id = "handGlobe" src="assets/handsWithGlobe.jpg" alt="Hands with globe">
+                    <a href="/goals/sustainable-cities"><img id = "handGlobe" src="assets/handsWithGlobe.jpg" alt="Hands with globe"></a>
                 </article>    
             </section>
         </section>

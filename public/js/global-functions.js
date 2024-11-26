@@ -18,7 +18,7 @@ class Loading {
         this.loadingOverlay.style.opacity = '0';
         this.loadingOverlay.style.visibility = 'hidden'; 
 
-        await (new Promise(resolve => setTimeout(resolve, 1200)))
+        await (new Promise(resolve => setTimeout(resolve, 1500)))
 
         document.body.removeChild(this.loadingOverlay)
 

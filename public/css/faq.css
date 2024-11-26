@@ -36,7 +36,7 @@
 #mainPage #container h1 {
     text-align: center;
     font-size: 2em;
-    color: #333;
+    color: #383c4c;
 }
 
 .dark-mode #mainPage #container h1 {
@@ -67,7 +67,7 @@
 }
 
 .dark-mode #mainPage #container #bios > * {
-    background-color: #444;
+    background-color: #383c4c;
     color: #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

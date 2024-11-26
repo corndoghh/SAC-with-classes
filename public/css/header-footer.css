@@ -63,7 +63,7 @@ body {
     text-decoration: none;
 }
 
-#includes .nav-links a {
+#includes .nav-links a, #includes .nav-links .dropdown {
     font-size: 1.1em;
     transition: color 0.3s;
 }

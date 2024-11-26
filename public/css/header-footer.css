@@ -87,7 +87,7 @@ body {
 }
 
 #includes .dropbtn:hover {
-    color: #1abc9c;
+    color: #95d5b2;
 }
 
 #includes .dropdown-content {
@@ -126,7 +126,7 @@ body {
 }
 
 #includes .user-icons a:hover {
-    color: #1abc9c;
+    color: #95d5b2;
 }
 
 /* Footer styles */
@@ -159,7 +159,7 @@ body {
 }
 
 #includes .footer-container a:hover {
-    color: #1abc9c;
+    color: #95d5b2;
 }
 
 /* Responsive adjustments */

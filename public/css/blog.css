@@ -39,12 +39,12 @@
     border: 1px solid black;
 }
 
-.dark-mode #mainPage article section {
+#mainPage article section {
     display: flex;
     flex-direction: row;
 }
 
-.dark-mode #mainPage article h1 {
+#mainPage article h1 {
     flex: 1;
 }
 

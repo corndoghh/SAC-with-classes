@@ -3,7 +3,14 @@ h1{
     font-size: 45px;
     padding: 1%;
     margin: 1.5%;
+    margin-bottom: 2.5%; 
     font-weight: bolder;
+    text-align: center;
+    color: black;
+}
+
+a{
+    color:#6a994e;
 }
 
 .headingQuestion{
@@ -12,7 +19,7 @@ h1{
     max-width:95%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-bottom:0;
+    margin-bottom:0.1%;
     padding:1.25%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -29,7 +36,7 @@ h1{
     max-width: 95%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-bottom: 1.5%;
+    margin-bottom: 2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,6 +48,7 @@ h1{
     max-width: 46.5%;
     margin-left: 2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .articles{
@@ -51,7 +59,7 @@ h1{
     background-color: white;
     float: left;    
     padding: 2%;
-    margin:2%;
+    margin:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 .article h3{
@@ -61,32 +69,81 @@ h1{
 img{
     float: right;
     max-width: 46.5%;
-    margin-right: 1%;
     border-radius: 8px;
-    margin-right:2.5%; 
+    margin-right:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     border-color: #EEDBBE;
     border-style:solid;
     border-width: 5;
 }
-
-#quote{
-    max-width: 90%;
-    margin: 5%;
-    margin-top: 0.5%;
-    text-align: center;
-
-
+#mainPage{
+    background-color: white;
+    border-radius: 8px;
+    margin: 1%;
+    height: auto;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom:0;
+    padding-top: 2.5%;
+    padding-bottom: 1%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 -8px 8px rgba(0, 0, 0, 0.1);
 }
-
+#quote{
+    border-radius: 8px;
+    width: 80%;
+    margin-left:10%;
+    margin-top:0;
+    margin-bottom:2.5%;
+    padding:5%;
+    padding-bottom: 3%;
+    padding-top:2.5%;
+    background-color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    
+}
 #quote p{
     text-align:right;
 }
-
 #quote q{
+
     text-align:center;
     font-style: italic;
 }
+
+.dark-mode #mainPage{
+   background-color: #131721;
+}
+.dark-mode .articles{
+    background-color: #383c4c;
+}
+.dark-mode #whatIs{
+    background-color: #383c4c;
+}
+.dark-mode .headingQuestion{
+    color: #0D1017;
+    background-color: #6a994e;
+}
+.dark-mode #articleContainer{
+    background-color: #6a994e;
+}
+.dark-mode #container{
+    background-color: #242936;
+}
+.dark-mode h1{
+    color: #95d5b2;
+}
+.dark-mode #quote {
+    background-color:#131721;
+}
+
+
 
 
 @media only screen and (max-width: 900px) {
@@ -95,18 +152,28 @@ img{
     max-width: 95%;
     margin: 2.5%;
  }
+ 
+ #quote{
+    margin-left: 10%;
+    padding-top: 1%;
+ }
 
 #articleContainer{
     float:none;
- max-width: 93%;
- margin:2%;
+    max-width: 95%;
+    margin:2.5%;
  padding-top: 1%;
 }
 
  img{
     float : none;
-    margin-left:10%;
-    max-width: 80%;
+    margin:2.5%;
+    margin-left:12.5%;
+    max-width: 75%;
     border-radius: 12px;
+ }
+
+ #mainPage{
+    height:auto;
  }
 }

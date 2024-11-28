@@ -15,7 +15,8 @@
 #mainPage #container {
     background-color: #fff;
     margin: 100px;
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: -15px;
     padding-bottom: 50px;
     padding-top: 50px;
     border-radius: 10px;
@@ -143,6 +144,12 @@
 
 #mainPage #container #taskTable table th {
     background-color: #6a994e;
+    color: #fff;
+    font-weight: bold;
+}
+
+.dark-mode #mainPage #container #taskTable table th {
+    background-color: #4b7434;
     color: #fff;
     font-weight: bold;
 }

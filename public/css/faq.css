@@ -8,7 +8,8 @@
 #mainPage #container {
     background-color: #fff;
     margin: 100px;
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: -15px;
     padding-bottom: 50px;
     padding-top: 50px;
     border-radius: 10px;

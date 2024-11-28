@@ -118,7 +118,8 @@
     margin-right: 100px;
     align-items: center;
     justify-content: center;
-    padding: 100px;
+    padding-bottom: 0px;
+    padding-top: 75px;
     background-color: #fff;
     row-gap: 50px;
 

@@ -21,7 +21,10 @@ body {
 
 #mainPage {
     flex: 1;
-    padding: 20px;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 100px;
     background-color: #f4f4f4; 
   }
 
@@ -128,6 +131,14 @@ body {
 #includes .user-icons a:hover {
     color: #95d5b2;
 }
+
+/* #includes .logo #titleGlobe #globeLogo{
+    max-width: 9%;
+    float: left;
+    margin-left: -25px;
+} */
+
+
 
 /* Footer styles */
 #includes footer {
@@ -312,7 +323,6 @@ body {
         background: #f2f2f2;
         margin: 0 10px;
         transition: 0.5s;
-
     }
 
     #includes .dropbtn:hover::after, #includes .dropbtn:hover::before, #includes .nav-links a:hover:after, #includes .nav-links a:hover:before {

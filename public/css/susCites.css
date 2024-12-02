@@ -40,24 +40,13 @@ a{
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
-.articleContainer1{
+#articleContainer{
     background-color: #95d5b2;
-    float: right;
+    float: left;
     border-radius: 16px;
     padding: 0.5%;
     max-width: 46.5%;
-    margin-right: 2.5%;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    
-}
-.articleContainer2{
-    background-color: #95d5b2;
-    border-radius: 16px;
-    float: none;
-    padding: 0.5%;
-    height: 100%;
-    width: 100%;
-    margin-right: 2.5%;
+    margin-left: 2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     
 }
@@ -68,16 +57,13 @@ a{
     max-width: 98%;
     border-radius: 8px;
     background-color: white;
-    text-align: left;
     float: left;    
     padding: 2%;
     margin:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    
 }
-.articles h2{
-    padding:0.5%;
-    font-size:22.5px;
+.article h3{
+    padding:1.5%;
 }
 
 img{
@@ -90,8 +76,7 @@ img{
     border-style:solid;
     border-width: 5;
 }
-
-#upperPage{
+#mainPage{
     background-color: white;
     border-radius: 8px;
     margin: 1%;
@@ -99,28 +84,13 @@ img{
     width: 80%;
     margin-left: 10%;
     margin-bottom:0;
-    padding: 5%;
-    padding-top:2.5%;
+    padding-top: 2.5%;
     padding-bottom: 1%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     box-shadow: 0 -8px 8px rgba(0, 0, 0, 0.1);
 }
-
-#midPage{
-    background-color: white;
-    margin-right: 1%;
-    margin-top:0;
-    height: auto;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom:0;
-    padding: 5%;
-    padding-bottom: 1%;
-    padding-top: 1%;
-    box-shadow: 0 -8px -8px rgba(0, 0, 0, 0.1);
-}
-#lowerPage{
+#quote{
     border-radius: 8px;
     width: 80%;
     margin-left:10%;
@@ -128,7 +98,7 @@ img{
     margin-bottom:2.5%;
     padding:5%;
     padding-bottom: 3%;
-    padding-top:0.5%;
+    padding-top:2.5%;
     background-color: white;
     text-align: center;
     font-family: 'Trebuchet MS', sans-serif;
@@ -136,9 +106,19 @@ img{
     border-top-right-radius: 0;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     z-index: -1;
+    font-size: larger;
     
 }
-.dark-mode #midPage{
+#quote p{
+    text-align:right;
+}
+#quote q{
+
+    text-align:center;
+    font-style: italic;
+}
+
+.dark-mode #mainPage{
    background-color: #131721;
 }
 .dark-mode .articles{
@@ -151,10 +131,7 @@ img{
     color: #0D1017;
     background-color: #6a994e;
 }
-.dark-mode .articleContainer1{
-    background-color: #6a994e;
-}
-.dark-mode .articleContainer2{
+.dark-mode #articleContainer{
     background-color: #6a994e;
 }
 .dark-mode #container{
@@ -163,9 +140,11 @@ img{
 .dark-mode h1{
     color: #95d5b2;
 }
-.dark-mode #lowerPage {
+.dark-mode #quote {
     background-color:#131721;
 }
+
+
 
 
 @media only screen and (max-width: 900px) {
@@ -176,38 +155,27 @@ img{
  }
  
  #quote{
-    
     margin-left: 10%;
-    padding-top: 0;
+    padding-top: 1%;
+    padding-bottom:2.5%;
  }
 
-.articleContainer1{
-    float:none;
-    max-width: 95%;
-    margin-left:2.5%;
-    padding-top: 1%;
-    height: auto;
-}
-.articleContainer2{
+#articleContainer{
     float:none;
     max-width: 95%;
     margin:2.5%;
-    padding-top: 1%;
-    height: auto;
+ padding-top: 1%;
 }
 
  img{
     float : none;
     margin:2.5%;
-    margin-top: 5%;
     margin-left:12.5%;
     max-width: 75%;
     border-radius: 12px;
  }
 
-
- #midPage{
+ #mainPage{
     height:auto;
-    padding-top: 2.5%;
  }
 }

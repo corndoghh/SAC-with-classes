@@ -72,7 +72,7 @@ img{
     border-radius: 8px;
     margin-right:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    border-color: #EEDBBE;
+    border-color: #6a994e;
     border-style:solid;
     border-width: 5;
 }
@@ -131,6 +131,7 @@ img{
     margin-bottom: 3%;
 }
 
+/* Dark mode selectors*/
 .dark-mode #mainPage{
    background-color: #131721;
 }
@@ -156,7 +157,6 @@ img{
 .dark-mode #quote {
     background-color:#131721;
 }
-
 
 
 

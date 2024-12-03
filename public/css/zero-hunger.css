@@ -20,7 +20,6 @@ a{
     max-width:95%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-bottom:0.1%;
     padding:1.25%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -37,7 +36,7 @@ a{
     max-width: 95%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-bottom: 2.5%;
+    margin-bottom: 1%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -121,6 +120,8 @@ img{
     padding-top: 1%;
     box-shadow: 0 -8px -8px rgba(0, 0, 0, 0.1);
 }
+
+/* Elements beneath the image */
 #lowerPage{
     border-radius: 8px;
     width: 80%;
@@ -153,6 +154,8 @@ img{
     margin-bottom: 3%;
 }
 
+
+/* Dark mode selectors */
 .dark-mode #midPage{
    background-color: #131721;
 }

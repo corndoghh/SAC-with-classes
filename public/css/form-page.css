@@ -5,7 +5,7 @@
 }
 
 #mainPage {
-    font-family: Arial, sans-serif;
+    font-family: Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,8 @@
 #mainPage form h2 {
     text-align: center;
     margin-bottom: 20px;
+    text-decoration: underline;
+    padding: 0.5%;
 }
 
 #mainPage .input-group {
@@ -48,6 +50,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+
 }
 
 #mainPage .input-group input {
@@ -66,21 +69,27 @@
 #mainPage .input-group button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #95d5b2;
     border: none;
-    color: white;
-    border-radius: 5px;
+    color: black;
+    border-radius: 8px;
     font-size: 16px;
+    font-family: 'Trebuchet MS', sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 1.5%
+}
+ #mainPage .input-group button:hover {
+    background-color: #84bd9e;
 }
 
 .dark-mode #mainPage .input-group button {
-    background-color: #007bff;
+    background-color: #6a994e;
 }
 
 .dark-mode #mainPage .input-group button:hover {
-    background-color: #0056b3;
+    background-color: #5d8645;
+    ;
 }
 
 #mainPage .forgot-password {

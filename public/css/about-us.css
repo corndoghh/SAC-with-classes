@@ -44,15 +44,19 @@
 }
 
 /* Headings */
-#mainPage #container h1 {
-    text-align: center;
+#mainPage #container h1{
     font-family: Trebuchet MS, sans-serif;
-    font-size: 2em;
-    color: #333;
+    font-size: 45px;
+    padding: 1%;
+    margin: 1.5%;
+    margin-bottom: 2.5%; 
+    font-weight: bolder;
+    text-align: center;
+    color: black;
 }
 
 .dark-mode #mainPage #container h1 {
-    color: #f9f9f9;
+    color: #95d5b2;
 }
 
 /* Bios Section */
@@ -167,6 +171,7 @@
 
     background-color: #383c4c;
 }
+
 
 #mainPage #container #taskTable table tr:hover {
     background-color: #e0e0e0;

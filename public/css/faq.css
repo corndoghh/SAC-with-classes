@@ -34,15 +34,21 @@
     flex: 1 1 100px;
 }
 
-#mainPage #container h1 {
+#mainPage #container h1{
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 45px;
+    padding: 1%;
+    margin: 1.5%;
+    margin-bottom: 2.5%; 
+    font-weight: bolder;
     text-align: center;
-    font-size: 2em;
-    color: #383c4c;
+    color: black;
 }
 
 .dark-mode #mainPage #container h1 {
-    color: #f9f9f9;
+    color: #95d5b2;
 }
+
 
 #mainPage #container #bios {
     display: flex;

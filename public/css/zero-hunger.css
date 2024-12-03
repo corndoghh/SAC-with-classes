@@ -139,6 +139,20 @@ img{
     z-index: -1;
     
 }
+
+/* Copied from FAQ css */
+.solid { 
+    padding: 0 !important;
+    flex: 0 !important; 
+    box-shadow: none;
+    width: 92%;
+    transform: translate(4%,0);
+    border: 1px solid #bbb;
+    
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
 .dark-mode #midPage{
    background-color: #131721;
 }
@@ -167,6 +181,11 @@ img{
 .dark-mode #lowerPage {
     background-color:#131721;
 }
+.dark-mode #upperPage {
+    background-color:#131721;
+}
+
+
 
 
 @media only screen and (max-width: 900px) {
@@ -176,7 +195,7 @@ img{
     margin: 2.5%;
  }
  
- #quote{
+ #upperPage{
     
     margin-left: 10%;
     padding-top: 0;

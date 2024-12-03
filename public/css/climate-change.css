@@ -118,6 +118,19 @@ img{
     font-style: italic;
 }
 
+/* Copied from FAQ css */
+.solid { 
+    padding: 0 !important;
+    flex: 0 !important; 
+    box-shadow: none;
+    width: 92%;
+    transform: translate(4%,0);
+    border: 1px solid #bbb;
+    
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
 .dark-mode #mainPage{
    background-color: #131721;
 }

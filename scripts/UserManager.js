@@ -15,6 +15,8 @@ class User {
 
     hasAccount = () => { return this.#data.HasAccount }
 
+    hasVerified = () => { return this.#data.IsEmailVerified }
+
     createAccount = async (username, password) => {
 
                 
@@ -84,13 +86,14 @@ module.exports = class UserManager {
     * @param {string[]} MiddleNames
     * @param {string} LastName
     * @param {string} Comment
-    * @returns {void}
+    * @returns {User}
     */
     addUser = async (Email, FirstName, MiddleNames, LastName, Comment) => {
         //TO DO Error handeling    
         const user = { FirstName, MiddleNames, LastName, Email, "UUID": Crypto.randomUUID(), Comment, "IsEmailVerified": false, "TimeCreated": Date.now(), "HasAccount": false }
     
         await User.databaseManager.addEntry(user)
+        return await this.getUser(Email)
     }
 
     /**
@@ -109,6 +112,12 @@ module.exports = class UserManager {
     
         return user !== undefined ? new User(user) : undefined
     }
+
+    /**
+     * 
+     * @param {*;} identifier 
+     * @returns {boolean}
+     */
 
     doesUserExist = async (identifier) => { return await this.getUser(identifier) === undefined ? false : true }
 

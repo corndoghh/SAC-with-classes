@@ -18,15 +18,6 @@ const startAutoplay = () => { intervalId = setInterval(() => { moveSlide(1); }, 
 
 const stopAutoplay = () => clearInterval(intervalId);
 
-startAutoplay();
-
-document.querySelector('#carousel').addEventListener('mouseenter', stopAutoplay);
-
-document.querySelector('#carousel').addEventListener('mouseleave', startAutoplay);
-
-document.querySelector('#previous').addEventListener('click', () => moveSlide(-1));
-
-document.querySelector('#next').addEventListener('click', () => moveSlide(1));
 
 
 const getBlogs = async () => {
@@ -84,7 +75,18 @@ const getBlogs = async () => {
         }
     }))
 
-    carouselIn.children[1].style.transform = 'translateY(-10px) scale(1.05)' 
+    if (Object.keys(blogUUIDs).length >= 4) {
+        startAutoplay();
+
+        document.querySelector('#carousel').addEventListener('mouseenter', stopAutoplay);
+
+        document.querySelector('#carousel').addEventListener('mouseleave', startAutoplay);
+
+        document.querySelector('#previous').addEventListener('click', () => moveSlide(-1));
+
+        document.querySelector('#next').addEventListener('click', () => moveSlide(1));
+        carouselIn.children[1].style.transform = 'translateY(-10px) scale(1.05)' 
+    }
 
 
 

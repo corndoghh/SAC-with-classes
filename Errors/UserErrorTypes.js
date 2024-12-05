@@ -6,5 +6,6 @@ module.exports = Object.freeze({
     INCORRECT_SIGNUP_CREDENTIALS: "Invalid sign-up request",
     USER_EXISTS: "User Already Exists",
     USERNAME_TAKEN: "This Username is already used by another user",
-    ACCOUNT_ALREADY_EXISTS: "This User already has an account associated with this email"
+    ACCOUNT_ALREADY_EXISTS: "This User already has an account associated with this email",
+    EMAIL_NOT_VERIFIED: "Please verify your email address before logging in"
 });

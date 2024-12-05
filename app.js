@@ -11,7 +11,8 @@ const BlogManager = require("./scripts/BlogManager")
 const UserManager = require("./scripts/UserManager");
 const BlogError = require("./Errors/BlogError");
 const BlogErrorTypes = require("./Errors/BlogErrorTypes");
-const Blog = require('./scripts/BlogManager')
+const { sendConfirmationEmail } = require("./scripts/EmailManager");
+const Crypto = require('crypto')
 
 
 const app = express();
@@ -222,6 +223,20 @@ app.get('/login', reqNoAuth, authentication)
 app.get('/forgot-password', reqNoAuth, authentication)
 app.get('/reset-password', reqNoAuth, authentication)
 
+app.get('/verify', reqData, reqUser, async (req, res) => {
+    const {token, email} = req.query
+    
+    const user = await userManager.getUser(email)
+
+    //TODO - json data 
+    if (user.hasVerified()) { res.send("Email already verified"); return }
+    if ((Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")) !== token) { res.send("Invalid token"); return }
+
+    await user.setValue('IsEmailVerified', true)
+
+    //DO TO what to do with clients after email verification
+    res.redirect('/login')
+})
 
 app.get('/logout', reqUser, reqAuth, logout)
 
@@ -301,7 +316,7 @@ app.get('/blog/edit', reqData, reqAuth, reqBlog, ownBlog, async (req, res) => {
         ...(await blog.getUsersname()),
         ...{isOwner: blog.getAuthor() === req.session.UUID}
     }
-
+    
     res.render('edit-blog.ejs', {blogData})
 
 }) 
@@ -326,6 +341,7 @@ app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
 
     if (!user.hasAccount() || !user.comparePasswordHash(Password)) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_CREDENTIALS, 400), res); }
 
+    if (!user.hasVerified()) { return ErrorHandling(new UserError(UserErrorTypes.EMAIL_NOT_VERIFIED, 403), res); }
 
     //if (!(await doesUserHaveAccount(identifier)) || !(await isPasswordCorrect(identifier, Password))) { res.send("Incorrect Username or Password"); return } 
 
@@ -333,7 +349,7 @@ app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
 
     console.log(`Successfully logged in as ${identifier} using password ${Password}`)
 
-
+    
     req.session.save(() => {
         if (returnUrl) {
             res.redirect(`${returnUrl !== '' ? returnUrl : '/'}`)
@@ -355,6 +371,8 @@ app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
     res.send("Reset password email sent")
 })
 
+
+
 app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
     let { Email, FirstName, MiddleNames, LastName, Comment, Username, Password, returnUrl } = req.body
     console.log(req.body)
@@ -365,19 +383,17 @@ app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
     if (await userManager.doesUserExist(Email)) { return ErrorHandling(new UserError(UserErrorTypes.USER_EXISTS, 409), res); }
 
 
-    // TODO - await sendConfirmationEmail(Email)
+    const user = await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment);
+
+    await sendConfirmationEmail(user)
+    
 
     //TODO - handle newsletter sign up 
-    if (Username === '' || Password === '') { await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment); res.send("You are signed up for the newsletter"); return }
-
+    if (Username === '' || Password === '') { res.send("You are signed up for the newsletter"); return }
+    
     if (await userManager.doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res); }
-
-    await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment)
-    const user = await userManager.getUser(Email)
-
+    
     await user.createAccount(Username, Password)
-
-    await user.login(req)
 
     //DO TO what to do with clients after account created
     req.session.save(() => {
@@ -423,6 +439,7 @@ app.post('/update-details', reqAuth, reqData, async (req, res) => {
     if (updatedInfo.hasOwnProperty('LastName')) { await user.setValue('LastName', updatedInfo["LastName"]) }
     if (updatedInfo.hasOwnProperty('Language')) { await user.setValue('Language', updatedInfo["Language"]) }
     if (updatedInfo.hasOwnProperty('TwoFactor')) { await user.setValue('TwoFactor', updatedInfo["TwoFactor"]) }
+
 
     if (updatedInfo.hasOwnProperty('Username')) {
         if (await userManager.doesUserExist(updatedInfo['Username'])) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), res) }
@@ -534,11 +551,12 @@ const test = async () => {
     // console.log(await user.comparePasswordHash("aaaamog"))
 
 
-    const user = await userManager.getUser('c50c99df-66fa-4d5d-9041-220ff0f8b8c7')
+    const user = await userManager.getUser('71f75431-fa01-469d-8eb3-10c020ec4fd7')
+
 
     const usersBlogs = await blogManager.getUsersBlogs(user)
 
-    console.log(await blogManager.addBlog(user, 'NEW', 'very NEW', 'holy shit'), "a")
+    console.log(await blogManager.addBlog(user, 'NceaceaEaaaaaaaaaaaaaaaaaW', 'very aaaaaNaaaaEceaceaW', 'holy caaaaaeaceeeeeeashit'), "a")
 
     usersBlogs.forEach((blog) => console.log(blog.getAllValues()));
 

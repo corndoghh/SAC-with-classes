@@ -72,7 +72,7 @@ img{
     border-radius: 8px;
     margin-right:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    border-color: #EEDBBE;
+    border-color: #6a994e;
     border-style:solid;
     border-width: 5;
 }
@@ -106,6 +106,7 @@ img{
     border-top-right-radius: 0;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     z-index: -1;
+    font-size: larger;
     
 }
 #quote p{
@@ -117,6 +118,20 @@ img{
     font-style: italic;
 }
 
+/* Copied from FAQ css */
+.solid { 
+    padding: 0 !important;
+    flex: 0 !important; 
+    box-shadow: none;
+    width: 92%;
+    transform: translate(4%,0);
+    border: 1px solid #bbb;
+    
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
+/* Dark mode selectors*/
 .dark-mode #mainPage{
    background-color: #131721;
 }
@@ -145,7 +160,6 @@ img{
 
 
 
-
 @media only screen and (max-width: 900px) {
  .articles{
     float : none;
@@ -156,6 +170,7 @@ img{
  #quote{
     margin-left: 10%;
     padding-top: 1%;
+    padding-bottom:2.5%;
  }
 
 #articleContainer{

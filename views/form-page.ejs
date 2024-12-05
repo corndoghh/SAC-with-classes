@@ -36,16 +36,16 @@
         <h2>Create Acccount</h2>        
         <% } if (type !== 'l' && type !== 'r') { %>
         <div class="input-group">
-            <label for="Email">Email</label>
+            <label for="Email">Email:</label>
             <input type="Email" id="Email" name="Email" required>
         </div>
         <% } if (type === 's') { %>
             <div class="input-group">
-                <label for="FirstName">First Name</label>
+                <label for="FirstName">First Name:</label>
                 <input type="text" id="FirstName" name="FirstName" required>
             </div>
             <div class="input-group">
-                <label for="LastName">Last Name</label>
+                <label for="LastName">Last Name:</label>
                 <input type="text" id="LastName" name="LastName" required>
             </div>
 
@@ -57,14 +57,14 @@
         <% } if (type !== 'f') { %>
             <% if (type !== 'r') { %> 
             <div class="input-group">
-                <label for="Username">Username</label>
+                <label for="Username">Username:</label>
                 <input type="text" id="Username" name="Username" <% if (type === 'a') { %> 
                     required
                 <% } %>>
             </div>
             <% } %>
             <div class="input-group">
-                <label for="Password">Password</label>
+                <label for="Password">Password:</label>
                 <input type="Password" id="Password" name="Password" <% if (type === 'a') { %> 
                     required
                 <% } %>>

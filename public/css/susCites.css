@@ -1,0 +1,210 @@
+h1{
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 45px;
+    padding: 1%;
+    margin: 1.5%;
+    margin-bottom: 2.5%; 
+    font-weight: bolder;
+    text-align: center;
+    color: black;
+}
+
+a{
+    color:#6a994e;
+}
+
+/* Copied from FAQ css */
+.solid { 
+    padding: 0 !important;
+    flex: 0 !important; 
+    box-shadow: none;
+    width: 92%;
+    transform: translate(4%,0);
+    border: 1px solid #bbb;
+    
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
+.headingQuestion{
+    border-radius: 8px;
+    color: black;
+    background-color: #EEDBBE;
+    max-width:46.5%;
+    margin-left:2.5%;
+    margin-right:0;
+    padding:2%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+} 
+
+#whatIs{    
+    background-color: white;
+    border-radius: 8px;
+    /*Used to connect naturally with the rest of the section */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding:2%;
+    padding-top: 1%;
+    float: left;
+    max-width: 46.5%;
+    float:left;
+    margin-left:2.5%;
+    margin-bottom: 2.5%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+#articleContainer{
+    background-color: #95d5b2;
+    float: left;
+    border-radius: 16px;
+    padding: 0.5%;
+    max-width: 95%;
+    margin-left: 2.5%;
+    padding-top:1%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.articles{
+    font-family: Verdana, sans-serif;
+    padding-top: 1%;
+    max-width: 98%;
+    border-radius: 8px;
+    background-color: white;
+    float: left;    
+    padding: 2%;
+    margin:2.5%;
+    margin-top: 1%;
+    text-align: left;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+.article h3{
+    padding:1.5%;
+}
+
+img{
+    float: right;
+    max-width: 46.5%;
+    border-radius: 8px;
+    margin-right:2.5%;
+    margin-left:0;
+    margin-top: -9.5%; 
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    border-color: #EEDBBE;
+    border-style:solid;
+    border-width: 5;
+   
+}
+#mainPage{
+    background-color: white;
+    border-radius: 8px;
+    margin: 1%;
+    height: auto;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom:0;
+    padding-top: 2.5%;
+    padding-bottom: 1%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 -8px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Elements beneath the image */
+#lowerPage{
+    border-radius: 8px;
+    width: 80%;
+    margin-left:10%;
+    margin-top:0;
+    margin-bottom:2.5%;
+    padding:5%;
+    padding-bottom: 3%;
+    padding-top:1%;
+    background-color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    
+}
+
+/* Dark mode selectors */
+.dark-mode #mainPage{
+   background-color: #131721;
+}
+.dark-mode .articles{
+    background-color: #383c4c;
+}
+.dark-mode #whatIs{
+    background-color: #383c4c;
+}
+.dark-mode .headingQuestion{
+    color: #0D1017;
+    background-color: #6a994e;
+}
+.dark-mode #articleContainer{
+    background-color: #6a994e;
+}
+.dark-mode #container{
+    background-color: #242936;
+}
+.dark-mode h1{
+    color: #95d5b2;
+}
+.dark-mode #lowerPage {
+    background-color:#131721;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+ h1{
+    margin-top:0.5%;
+ }
+ 
+    .articles{
+    float : none;
+    max-width: 95%;
+    margin: 2.5%;
+    margin-top: 1%;
+ }
+ 
+ #lowerPage{
+    margin-left: 10%;
+    padding-top: 1%;
+    padding-bottom:2.5%;
+ }
+
+#articleContainer{
+    float:none;
+    max-width: 95%;
+    margin:2.5%;
+ padding-top: 1%;
+ margin-top: 0.5%;
+}
+
+ img{
+    float : none;
+    margin:2.5%;
+    margin-left:12.5%;
+    max-width: 75%;
+    border-radius: 12px;
+ }
+
+ #mainPage{
+    height:auto;
+ }
+
+ .headingQuestion{
+    max-width: 95%;
+ }
+ #whatIs{
+    max-width: 95%;
+    margin-bottom:2.5%;
+ }
+}

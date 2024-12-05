@@ -10,6 +10,17 @@
     max-width: 100%;
 }
 
+#mainPage #header h1{
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 45px;
+    padding: 1%;
+    margin: 1.5%;
+    margin-bottom: 2.5%; 
+    font-weight: bolder;
+    text-align: center;
+    color: black;
+}
+
 #mainPage #carouselIn {
     display: flex;
     width: 100%; 
@@ -52,6 +63,9 @@
     flex: 1;
 }
 
+.dark-mode #mainPage #container h1 {
+    color: #95d5b2;
+}
 
 
 /* #mainPage #slide::before {

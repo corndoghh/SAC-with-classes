@@ -14,25 +14,25 @@
     <% } else { %>
     <title>Reset Password</title>
     <% } %>
-    <link rel="stylesheet" href="css/form-page.css">
-    <script src="js/form-page.js"></script>
+    <link rel="stylesheet" href="/css/form-page.css">
+    <script src="/js/form-page.js" defer></script>
 </head>
 <body>
     <div class="form-container">
         <% if (type === 'l') { %>
-        <form action="/auth" method="POST">
+        <form id="form" action="/auth" method="POST">
         <h2>Login</h2>
         <% } else if (type === 's') { %>
-        <form action="/sign-up" method="POST">
+        <form id="form" action="/sign-up" method="POST">
         <h2>Sign up</h2>
         <% } else if (type === 'f') { %>
-        <form action="/forgot-password" method="POST">
+        <form id="form" action="/forgot-password" method="POST">
         <h2>Forgot Password</h2>
         <% } else if (type === 'r') { %>
-        <form action="/reset-password" method="POST">
+        <form id="form" action="/reset-password" method="POST">
         <h2>Reset Password</h2>   
         <% } else if (type === 'a') { %>
-        <form action="/add-account" method="POST">
+        <form id="form" action="/add-account" method="POST">
         <h2>Create Acccount</h2>        
         <% } if (type !== 'l' && type !== 'r') { %>
         <div class="input-group">
@@ -90,6 +90,8 @@
                 </div>
             <% } %>
             <input type="hidden" name="returnUrl" value=<%= locals.return_url %>>
+            <p id="message" style="color: red;"></p>
+
         </form>
     </div>
 </body>

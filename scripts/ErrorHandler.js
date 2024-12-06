@@ -6,7 +6,10 @@ const BlogErrorTypes = require("../Errors/BlogErrorTypes");
 const ImageError = require("../Errors/ImageError")
 const ImageErrorTypes = require("../Errors/ImageErrorTypes")
 const FormError = require("../Errors/FormError")
-const FormErrorTypes = require("../Errors/FormErrorTypes")
+const FormErrorTypes = require("../Errors/FormErrorTypes");
+const WebError = require("../Errors/WebError");
+const WebErrorTypes = require("../Errors/WebErrorTypes");
+
 
 
 /**
@@ -15,7 +18,13 @@ const FormErrorTypes = require("../Errors/FormErrorTypes")
  * @param {*} res 
  * @returns {}
  */
-const ErrorHandling = (err, res) => { return res.status(err.statusCode).json({ error: err.message }); }
+const ErrorHandling = (err, req, res) => {
+    req.headers['embedded'] = req.headers['embedded'] || false;
+    if (err instanceof WebError || req.headers.embedded) {
+        return res.status(err.statusCode).json({ error: err.message });
+    }
+    res.redirect(`/?error=${encodeURIComponent(err.message)}`);
+}
 
 module.exports = {
     UserError,
@@ -26,5 +35,7 @@ module.exports = {
     ImageErrorTypes,
     FormError,
     FormErrorTypes,
+    WebError,
+    WebErrorTypes,
     ErrorHandling
 };

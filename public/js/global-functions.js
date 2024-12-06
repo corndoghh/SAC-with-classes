@@ -47,7 +47,7 @@ const addChildrenToID = async (entry, element = undefined, parentIndicator) => {
     if (entry.children === undefined && Object.entries(entry).length > 1) {
         if (!element) { return }
         Object.entries(entry).splice(1, 1).forEach(([attribute, value]) => {
-            if (attribute === 'textContent' || attribute === 'title') {
+            if (attribute === 'textContent' || attribute === 'title' || attribute === 'innerHTML') {
                 element[attribute] = value[language]
                 return
             }
@@ -66,7 +66,7 @@ const addChildrenToID = async (entry, element = undefined, parentIndicator) => {
                 addChildrenToID(child, childElement, parentIndicator)
                 return
             }
-            if (attribute === 'textContent' || attribute === 'title') {
+            if (attribute === 'textContent' || attribute === 'title' || attribute === 'innerHTML') {
                 childElement[attribute] = value[language]
                 return
             }

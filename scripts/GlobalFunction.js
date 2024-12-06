@@ -12,7 +12,7 @@ const formatFormData = (req) => {
             let fileData = [];
 
             file.on('data', (chunk) => {
-                fileData.push(chunk); 
+                fileData.push(chunk);
             });
 
             file.on('end', () => {
@@ -29,22 +29,17 @@ const formatFormData = (req) => {
 
         bb.on('field', (fieldname, value) => {
             if (fieldname === 'json') {
-                try { 
+                try {
                     jsonObjects.push(JSON.parse(value));
                 } catch (err) {
-                    reject(new Error('Invalid JSON data'));  // Reject if JSON parsing fails
+                    reject(new Error('Invalid JSON data'));
                 }
             }
         });
 
-        bb.on('finish', () => {
-            // Once busboy finishes, resolve the promise with the results
-            resolve({ files, jsonObjects });
-        });
+        bb.on('finish', () => { resolve({ files, jsonObjects }); });
 
-        bb.on('error', (err) => {
-            reject(err);  // Reject the promise if there's an error during processing
-        });
+        bb.on('error', (err) => { reject(err); });
 
         req.pipe(bb);
     });

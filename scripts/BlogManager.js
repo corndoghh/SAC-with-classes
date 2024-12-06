@@ -35,6 +35,10 @@ class Blog {
     }
 
 
+    /**
+     * 
+     * @returns {Object}
+     */
     getAllValues = () => {
         return {
             "title": this.getTitle(),
@@ -46,20 +50,23 @@ class Blog {
         }
     }
 
+    /**
+     * 
+     * @param {Object} newValues 
+     */
     updateAllValues = async (newValues) => {
         await (new DatabaseManager('blogs.json')).updateEntry(this.getAllValues(), newValues)
         this.#user = newValues.author
         this.#title = newValues.title
         this.#content = newValues.content
         this.#description = newValues.description
-        this.#blogHash = createHash('sha256').update(this.#title+this.#content).digest('base64');
-
-
-        //console.log(newValues)
-
-         
+        this.#blogHash = createHash('sha256').update(this.#title+this.#content).digest('base64');    
     }
 
+    /**
+     * 
+     * @param {*} edit 
+     */
     setValues = async (edit) => {
         const newValues = this.getAllValues()
 
@@ -110,8 +117,6 @@ module.exports = class BlogManager {
      * @returns {boolean, Blog} 
      */
     addBlog = async (user, title, content, description, image) => {
-        if (!ImageManager.isImage(image.buffer)) { return false }
-
         const blog = new Blog(user, title, content, description)
  
         if (await this.doesBlogExist(blog.getBlogHash())) { return false }

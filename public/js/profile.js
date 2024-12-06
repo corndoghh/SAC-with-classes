@@ -75,10 +75,7 @@ const start = async () => {
         e.preventDefault()
         const fetchData = new FormData()
 
-        if (e.submitter !== null && e.submitter.id === 'remove-pfp') {
-            const loading = new Loading()
-            fetchData.append('json', JSON.stringify({ 'remove-pfp': true }))
-        }
+        if (e.submitter !== null && e.submitter.id === 'remove-pfp') { fetchData.append('json', JSON.stringify({ 'remove-pfp': true })) }
         else {
             const formData = Object.fromEntries(new FormData(e.target))
 
@@ -95,6 +92,9 @@ const start = async () => {
         const response = await fetch('/profile/details', {
             method: "post",
             credentials: "same-origin",
+            headers: {
+                "Embedded": 'true'
+            },
             body: fetchData
         })
 

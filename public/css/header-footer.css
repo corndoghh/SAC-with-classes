@@ -352,3 +352,36 @@ body {
     }
     
 }
+
+#includes .language-selector {
+    display: inline-block;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.dark-mode #includes .language-selector {
+    background-color: #34495e;  
+}
+
+#language-select {
+    background-color: transparent;
+    color: #ecf0f1;
+    border: 1px solid #ecf0f1; 
+    padding: 5px 10px;
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+#language-select:hover {
+    background-color: #95d5b2;  
+    color: #fff;
+}
+
+#language-select:focus {
+    outline: none;
+    background-color: #95d5b2;  
+    color: #fff;
+    border-color: #95d5b2;
+}

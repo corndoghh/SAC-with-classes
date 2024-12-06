@@ -2,6 +2,9 @@ const DatabaseManager = require("./DatabaseManager")
 const UserManager = require("./UserManager")
 const User = require('./UserManager')
 const { createHash, randomUUID } = require('crypto')
+const ImageManager = require("./ImageManager")
+
+const imageManager = new ImageManager('blogs')
 
 const userManager = new UserManager()
 
@@ -82,9 +85,13 @@ class Blog {
             "LastName": user.getValue('LastName')
         }
     }
-
-
-    
+    getBlogImage = async () => { return (await imageManager.getImage(this.#UUID)).buffer }
+    updateBlogImage = async (image) => {
+        image.filename.filename = this.#UUID + '.' +  image.filename.filename.split('.').pop()
+        await imageManager.deleteImage(this.#UUID)
+        await imageManager.uploadImage(image)
+    }
+   
 
 }
 
@@ -102,12 +109,15 @@ module.exports = class BlogManager {
      * @param {string} description
      * @returns {boolean, Blog} 
      */
-    addBlog = async (user, title, content, description) => {
+    addBlog = async (user, title, content, description, image) => {
+        if (!ImageManager.isImage(image.buffer)) { return false }
+
         const blog = new Blog(user, title, content, description)
-
-
+ 
         if (await this.doesBlogExist(blog.getBlogHash())) { return false }
 
+        image.filename.filename = blog.getUUID() + '.' +  image.filename.filename.split('.').pop()
+        await imageManager.uploadImage(image)
         // if (blog.getBlogHash())
         await BlogManager.databaseManager.addEntry(blog.getAllValues())
         return blog

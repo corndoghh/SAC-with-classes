@@ -7,7 +7,6 @@ module.exports = class DatabaseManager {
 
     constructor(filePath) {
         this.#jsonPath = __dirname + "/../json/" + filePath
-
     }
 
     getIndex = async (entry) => {
@@ -28,6 +27,7 @@ module.exports = class DatabaseManager {
     }
 
     readDatabase = async () => {
+        await fs.stat(this.#jsonPath).catch(async () => await fs.writeFile(this.#jsonPath, "[]"))
         const data = await fs.readFile(this.#jsonPath, "utf-8")
         return JSON.parse(data)
     }

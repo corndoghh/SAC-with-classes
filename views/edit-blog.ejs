@@ -13,7 +13,7 @@
         <div id="editPage">
             <div id="editContainer">
                 <h1>Edit Blog</h1>
-                <form id="editForm" method="post">
+                <form id="editForm">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="Enter blog title" value="<%= locals.blogData === undefined ? '' : blogData.title %>" required>
 
@@ -24,13 +24,15 @@
                     <textarea id="content" name="content" rows="10" placeholder="Write your content here..." required><%= locals.blogData === undefined ? '' : blogData.content %></textarea>
                     
                     <input name="UUID" type="hidden" value="<%= locals.blogData === undefined ? '' : blogData.UUID %>" readonly>
-                    <!-- <label for="image">Update Image</label>
+
+                    <label for="image">Update Image</label>
                     <input type="file" id="image" name="image" accept="image/*">
-     -->
+    
                     <div id="formButtons">
                         <button type="submit" id="saveBtn">Save Changes</button>
                         <button type="button" id="cancelBtn" onclick="window.history.back();">Cancel</button>
                     </div>
+                    <p id="message" style="color: red;"></p>
                 </form>
             </div>
         </div>

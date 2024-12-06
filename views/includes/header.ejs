@@ -1,41 +1,52 @@
+<html lang=<%= Language %>></html>
 <div id="includes">
     <link rel="stylesheet" href="/css/header-footer.css">
     <link rel="stylesheet" href="/css/dark-mode.css">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <script src="/js/dark-mode.js" defer></script>
     <script src="/js/global-functions.js"></script>
     <script src="/js/header.js" defer></script>
+    <script src="/js/load-pages.js" defer></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header>
         <div class="header-container">
             <div class="logo">
-                <!-- <div id="titleGlobe"><img id = "globeLogo" src="assets/globeLogo.jpg" alt="Website logo"></div> -->
-                <a id = "title" href="/"><span><strong>SAC Website</strong></span></a>
+                <a id="title" href="/"><span><strong>SAC Website</strong></span></a>
             </div>
-            <nav class="nav-links">
-                <a href="/">Home</a>
+            <nav id="nav-links" class="nav-links">
+                <!-- <a href="/">Home</a>
                 <a href="/about-us">About Us</a>
                 <a href="/faq">FAQ</a>
-                <a href="/blogs">Blogs</a>
+                <a href="/blogs">Blogs</a> -->
 
-                <div class="dropdown">
-                    <button class="dropbtn">Our Goals</button>
-                    <div class="dropdown-content">
+                <!-- <div id="dropdown" class="dropdown"> -->
+                    <!-- <button class="dropbtn">Our Goals</button>
+                    <div id="dropdown-content" class="dropdown-content">
                         <a href="/goals/climate-change">Climate Action</a>
                         <a href="/goals/sustainable-cities">Sustainable Cities</a>
                         <a href="/goals/zero-hunger">Zero Hunger</a>
                     </div>
-                </div>
+                </div> -->
             </nav>
-            <div class="user-icons">
+            <div id="user-icons" class="user-icons">
+                <div class="language-selector">
+                    <select current=<%= Language %> id="language-select" onchange="changeLanguage(event)">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
                 <a href="javascript:void(0)"><i id="dark-mode-icon"></i></a>
-                <a href="/profile" title="Settings"><i class="fas fa-cogs"></i></a>
+                <a href="/profile" id="Settings" title="Settings"><i class="fas fa-cogs"></i></a>
                 <% if (!loggedIn) { %>
-                <a href="/signup" title="Sign Up"><i class="fas fa-user-plus"></i></a>
+                <a href="/signup" id="SignUp" title="Sign Up"><i class="fas fa-user-plus"></i></a>
                 <% } else { %>
-                <a href="/logout" title="Logout" ><i class="fa-solid fa-right-from-bracket"></i></a>
+                <a href="/logout" id="Logout" title="Logout" ><i class="fa-solid fa-right-from-bracket"></i></a>
                 <% } %>
 
             </div>

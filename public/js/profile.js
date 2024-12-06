@@ -15,7 +15,7 @@ document.getElementById("dark-mode-input").onclick = async () => { await toggleM
 
 
 const start = async () => {
-    
+
     const loading = new Loading()
 
     const requestHeaders = {
@@ -35,6 +35,8 @@ const start = async () => {
     const LastName = document.querySelector('#LastName')
     const Username = document.querySelector('#Username')
     const TwoFactor = document.querySelector('#two-factor-auth')
+    const Language = document.querySelector('#Language')
+
 
     if ((await fetch('/profile/pfp', {
         method: 'get',
@@ -49,68 +51,105 @@ const start = async () => {
     LastName.placeholder = jsonData.LastName
     Username.placeholder = jsonData.Username
 
+    Language.selectedIndex = {
+        'en': 0,
+        'es': 1,
+        'fr': 2,
+        'de': 3
+    }[jsonData.Language]
+
     loading.destroy()
 
-    document.querySelector(`#form`).addEventListener("submit", async (e) => {
+    const form = document.querySelector(`#form`)
+
+    form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            console.log('kep')
+            form.requestSubmit()
+            
+        }
+    });
+
+    form.addEventListener("submit", async (e) => {
         e.preventDefault()
+        const fetchData = new FormData()
 
-        const formData = Object.fromEntries(new FormData(e.target))
-
-        const message = document.querySelector('#message')
-
-        if (!formData['TwoFactor']) { formData['TwoFactor'] = 'off' }
-
-        if (formData.NewPassword && !formData.OldPassword) { message.textContent = 'You need to enter your old password before updating it'; return }
-
-        if (!formData.NewPassword && formData.OldPassword) { message.textContent = 'No new password provided'; return }
-
-        for (item in formData) {
-            console.log(item, formData.hasOwnProperty(item) && !!formData[item])
-
-            if (item === "language" || item === 'TwoFactor') { continue }
-
-            if (!(formData.hasOwnProperty(item) && !!formData[item])) { continue }
-            if (!jsonData.hasOwnProperty(item)) { continue }
-
-            if (jsonData[item] === formData[item]) {
-                message.textContent = 'You cannot update a value to the existing value'
-                return
-            }
-
+        if (e.submitter !== null && e.submitter.id === 'remove-pfp') {
+            const loading = new Loading()
+            fetchData.append('json', JSON.stringify({ 'remove-pfp': true }))
         }
+        else {
+            const formData = Object.fromEntries(new FormData(e.target))
 
-        if (formData.NewPassword && formData.OldPassword === formData.NewPassword) { message.textContent = 'New password cannot be the same as the old one'; return }
+            !formData['TwoFactor'] ? formData['TwoFactor'] = 'off' : formData['TwoFactor'] = 'on';
+            formData['ProfilePic'].name ? fetchData.append('ProfilePic', formData['ProfilePic']) : formData['ProfilePic'] = '';
 
-        if (formData['ProfilePic'].name !== '') {
-            const imageData = new FormData();
-            imageData.append('image', formData['ProfilePic']);
+            fetchData.append('json', JSON.stringify(formData))
 
-            await fetch('/upload-picture', {
-                method: 'post',
-                body: imageData,
-                credentials: 'same-origin'
-            })
-
+            console.log(fetchData)
         }
-
-        message.textContent = ''
-
-        console.log(formData.language)
 
         const loading = new Loading()
 
-        const response = await fetch('/update-details', {
+        const response = await fetch('/profile/details', {
             method: "post",
-            headers: requestHeaders,
             credentials: "same-origin",
-            body: JSON.stringify(formData)
+            body: fetchData
         })
 
         loading.destroy()
 
-        if (response.status === 409) { message.textContent = (await response.json())["error"]; return }
+        const message = document.querySelector('#message')
+        message.textContent = ''
+
+        console.log(response)
+
+
+        if (response.status !== 200) { message.textContent = (await response.json())["error"]; return }
 
         window.location.href = "/profile"
+
+
+
+        // formData['ProfilePic'] = formData['ProfilePic'].name === '' ? '' : JSON.stringify(formData['ProfilePic'])
+
+
+        // if (formData.NewPassword && !formData.OldPassword) { message.textContent = 'You need to enter your old password before updating it'; return }
+
+        // if (!formData.NewPassword && formData.OldPassword) { message.textContent = 'No new password provided'; return }
+
+        // == TODO == add checks back
+
+        // for (item in formData) {
+        //     console.log(item, formData.hasOwnProperty(item) && !!formData[item])
+
+        //     if (item === "language" || item === 'TwoFactor') { continue }
+
+        //     if (!(formData.hasOwnProperty(item) && !!formData[item])) { continue }
+        //     if (!jsonData.hasOwnProperty(item)) { continue }
+
+        //     if (jsonData[item] === formData[item]) {
+        //         message.textContent = 'You cannot update a value to the existing value'
+        //         return
+        //     }
+
+        // }
+
+        // if (formData.NewPassword && formData.OldPassword === formData.NewPassword) { message.textContent = 'New password cannot be the same as the old one'; return }
+
+        // if (formData['ProfilePic'].name !== '') {
+        //     const imageData = new FormData();
+        //     imageData.append('image', formData['ProfilePic']);
+        //     await fetch('/upload-picture', {
+        //         method: 'post',
+        //         body: imageData,
+        //         credentials: 'same-origin'
+        //     })
+
+        // }
+        // return
+
 
     })
 }

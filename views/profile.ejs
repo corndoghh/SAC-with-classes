@@ -1,89 +1,89 @@
 <%- include("includes/header.ejs") %>
 
   <!DOCTYPE html>
-  <html lang="en">
 
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Settings</title>
-    <link rel="stylesheet" href="css/profile.css">
-    <script src="js/profile.js" defer></script>
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="/js/profile.js" defer></script>
 
   </head>
   <div id="mainPage">
 
     <div class="settings-container">
-      <h1>Profile Settings</h1>
+      <h1 id="settings-header" >Profile Settings</h1>
       <form id="form">
         <!-- Profile document.querySelector('#form')Picture -->
         <div class="form-group">
-          <label for="profile-picture">Profile Picture</label>
+          <label id="profile-picture-lable" for="profile-picture">Profile Picture</label>
           <div class="profile-pic-wrapper">
             <img src="https://via.placeholder.com/100" alt="Profile Picture" id="profile-pic-preview">
             <input type="file" id="profile-picture" accept="image/*" name="ProfilePic" onchange="previewImage(event)">
+            <button id="remove-pfp" class="delete-button" type="submit">Remove PFP</button>
           </div>
         </div>
 
         <!-- Username -->
         <div class="form-group">
-          <label for="Username">Username</label>
+          <label id="Username-lable" for="Username">Username</label>
           <input type="text" name="Username" id="Username">
         </div>
 
         <!-- Name -->
         <div class="form-group">
-          <label for="FirstName">First Name</label>
+          <label id="FirstName-lable" for="FirstName">First Name</label>
           <input type="text" name="FirstName" id="FirstName">
         </div>
 
         <div class="form-group">
-          <label for="LastName">Last Name</label>
+          <label id="LastName-lable" for="LastName">Last Name</label>
           <input type="text" name="LastName" id="LastName">
         </div>
 
         <!-- Password -->
         <div class="form-group">
-          <label for="OldPassword">Old Password</label>
+          <label id="OldPassword-lable" for="OldPassword">Old Password</label>
           <input type="password" name="OldPassword" id="OldPassword">
         </div>
 
         <div class="form-group">
-          <label for="NewPassword">New Password</label>
+          <label id="NewPassword-lable" for="NewPassword">New Password</label>
           <input type="password" name="NewPassword" id="NewPassword">
         </div>
 
         <!-- Language Selection -->
         <div class="form-group">
-          <label for="language">Language</label>
-          <select name="language" id="language">
+          <label id="Language-lable" for="Language">Language</label>
+          <select name="Language" id="Language">
             <option value="en">English</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
           </select>
         </div>
 
         <!-- Dark Mode Toggle -->
         <div class="form-group">
-          <label for="dark-mode-input">Dark Mode</label>
+          <label id="dark-mode-input-lable" for="dark-mode-input">Dark Mode</label>
           <input type="checkbox" id="dark-mode-input">
         </div>
 
         <!-- Two-Factor Authentication -->
         <div class="form-group">
-          <label for="two-factor-auth">Enable Two-Factor Authentication</label>
+          <label id="two-factor-auth-lable" for="two-factor-auth">Enable Two-Factor Authentication</label>
           <input type="checkbox" name="TwoFactor" id="two-factor-auth">
         </div>
 
         <!-- Delete Account -->
         <div class="form-group">
-          <label for="delete-account">Delete Account</label>
+          <label id="delete-account-lable" for="delete-account">Delete Account</label>
           <button type="button" id="delete-account" class="delete-button" onclick="confirmDelete()">Delete
             Account</button>
         </div>
 
-        <button type="submit">Save Changes</button>
+        <button id="submit" type="submit">Save Changes</button>
 
         <p id="message" style="color: red;"></p>
       </form>

@@ -4,7 +4,12 @@
         "children": [
             {
                 "type": "h1",
-                "textContent": "About Us"
+                "textContent": {
+                    "en": "About Us",
+                    "es": "Acerca de Nosotros",
+                    "fr": "À propos de nous",
+                    "de": "Über uns"
+                }
             },
             {
                 "type": "hr",
@@ -32,11 +37,21 @@
                 "children": [
                     {
                         "type": "h3",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "p",
-                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                        "textContent": {
+                            "en": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. I also wrote the CSS for the ‘Goals’ pages and ensured that all other pages were cohesive. I coded the HTML for the ‘Our Info’ page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart.",
+                            "es": "Para este proyecto, contribuí principalmente a los aspectos de diseño, ya que creé el tablero de ideas utilizando las ideas que discutimos. También escribí el CSS para las páginas de 'Metas' y me aseguré de que todas las demás páginas fueran coherentes. Programé el HTML para la página de 'Nuestra Información'. Estaba bien preparado para el diseño, ya que tomé medios como parte de mis A levels. Para la organización, planeé muchas de las reuniones y creé un gráfico de Gantt.",
+                            "fr": "Pour ce projet, j'ai principalement contribué aux aspects de conception, en créant le mood board à partir des idées que nous avons discutées. J'ai également écrit le CSS pour les pages 'Objectifs' et veillé à ce que toutes les autres pages soient cohérentes. J'ai codé le HTML pour la page 'Nos informations'. J'étais bien adapté pour le design car j'ai pris des cours de médias dans le cadre de mes A levels. Pour l'organisation, j'ai planifié de nombreuses réunions et créé un diagramme de Gantt.",
+                            "de": "Für dieses Projekt habe ich hauptsächlich zu den Designaspekten beigetragen, da ich das Moodboard unter Verwendung der Ideen, die wir besprochen haben, erstellt habe. Ich schrieb auch das CSS für die ‚Ziele‘-Seiten und stellte sicher, dass alle anderen Seiten kohärent waren. Ich codierte das HTML für die ‚Unsere Infos‘-Seite. Ich war gut für das Design geeignet, da ich Medien als Teil meiner A-Levels belegte. Für die Organisation plante ich viele der Besprechungen und erstellte ein Gantt-Diagramm."
+                        }
                     }
                 ]
             },
@@ -45,11 +60,21 @@
                 "children": [
                     {
                         "type": "h3",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     },
                     {
                         "type": "p",
-                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                        "textContent": {
+                            "en": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. I also wrote the CSS for the ‘Goals’ pages and ensured that all other pages were cohesive. I coded the HTML for the ‘Our Info’ page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart.",
+                            "es": "Para este proyecto, contribuí principalmente a los aspectos de diseño, ya que creé el tablero de ideas utilizando las ideas que discutimos. También escribí el CSS para las páginas de 'Metas' y me aseguré de que todas las demás páginas fueran coherentes. Programé el HTML para la página de 'Nuestra Información'. Estaba bien preparado para el diseño, ya que tomé medios como parte de mis A levels. Para la organización, planeé muchas de las reuniones y creé un gráfico de Gantt.",
+                            "fr": "Pour ce projet, j'ai principalement contribué aux aspects de conception, en créant le mood board à partir des idées que nous avons discutées. J'ai également écrit le CSS pour les pages 'Objectifs' et veillé à ce que toutes les autres pages soient cohérentes. J'ai codé le HTML pour la page 'Nos informations'. J'étais bien adapté pour le design car j'ai pris des cours de médias dans le cadre de mes A levels. Pour l'organisation, j'ai planifié de nombreuses réunions et créé un diagramme de Gantt.",
+                            "de": "Für dieses Projekt habe ich hauptsächlich zu den Designaspekten beigetragen, da ich das Moodboard unter Verwendung der Ideen, die wir besprochen haben, erstellt habe. Ich schrieb auch das CSS für die ‚Ziele‘-Seiten und stellte sicher, dass alle anderen Seiten kohärent waren. Ich codierte das HTML für die ‚Unsere Infos‘-Seite. Ich war gut für das Design geeignet, da ich Medien als Teil meiner A-Levels belegte. Für die Organisation plante ich viele der Besprechungen und erstellte ein Gantt-Diagramm."
+                        }
                     }
                 ]
             },
@@ -58,11 +83,21 @@
                 "children": [
                     {
                         "type": "h3",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     },
                     {
                         "type": "p",
-                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                        "textContent": {
+                            "en": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. I also wrote the CSS for the ‘Goals’ pages and ensured that all other pages were cohesive. I coded the HTML for the ‘Our Info’ page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart.",
+                            "es": "Para este proyecto, contribuí principalmente a los aspectos de diseño, ya que creé el tablero de ideas utilizando las ideas que discutimos. También escribí el CSS para las páginas de 'Metas' y me aseguré de que todas las demás páginas fueran coherentes. Programé el HTML para la página de 'Nuestra Información'. Estaba bien preparado para el diseño, ya que tomé medios como parte de mis A levels. Para la organización, planeé muchas de las reuniones y creé un gráfico de Gantt.",
+                            "fr": "Pour ce projet, j'ai principalement contribué aux aspects de conception, en créant le mood board à partir des idées que nous avons discutées. J'ai également écrit le CSS pour les pages 'Objectifs' et veillé à ce que toutes les autres pages soient cohérentes. J'ai codé le HTML pour la page 'Nos informations'. J'étais bien adapté pour le design car j'ai pris des cours de médias dans le cadre de mes A levels. Pour l'organisation, j'ai planifié de nombreuses réunions et créé un diagramme de Gantt.",
+                            "de": "Für dieses Projekt habe ich hauptsächlich zu den Designaspekten beigetragen, da ich das Moodboard unter Verwendung der Ideen, die wir besprochen haben, erstellt habe. Ich schrieb auch das CSS für die ‚Ziele‘-Seiten und stellte sicher, dass alle anderen Seiten kohärent waren. Ich codierte das HTML für die ‚Unsere Infos‘-Seite. Ich war gut für das Design geeignet, da ich Medien als Teil meiner A-Levels belegte. Für die Organisation plante ich viele der Besprechungen und erstellte ein Gantt-Diagramm."
+                        }
                     }
                 ]
             },
@@ -71,11 +106,21 @@
                 "children": [
                     {
                         "type": "h3",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "p",
-                        "textContent": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. Ialso wrote the CSS for the ‘Goals’ pages and ensured that allother pages were cohesive. I coded the HTML for the ‘Our Info’page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart."
+                        "textContent": {
+                            "en": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. I also wrote the CSS for the ‘Goals’ pages and ensured that all other pages were cohesive. I coded the HTML for the ‘Our Info’ page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart.",
+                            "es": "Para este proyecto, contribuí principalmente a los aspectos de diseño, ya que creé el tablero de ideas utilizando las ideas que discutimos. También escribí el CSS para las páginas de 'Metas' y me aseguré de que todas las demás páginas fueran coherentes. Programé el HTML para la página de 'Nuestra Información'. Estaba bien preparado para el diseño, ya que tomé medios como parte de mis A levels. Para la organización, planeé muchas de las reuniones y creé un gráfico de Gantt.",
+                            "fr": "Pour ce projet, j'ai principalement contribué aux aspects de conception, en créant le mood board à partir des idées que nous avons discutées. J'ai également écrit le CSS pour les pages 'Objectifs' et veillé à ce que toutes les autres pages soient cohérentes. J'ai codé le HTML pour la page 'Nos informations'. J'étais bien adapté pour le design car j'ai pris des cours de médias dans le cadre de mes A levels. Pour l'organisation, j'ai planifié de nombreuses réunions et créé un diagramme de Gantt.",
+                            "de": "Für dieses Projekt habe ich hauptsächlich zu den Designaspekten beigetragen, da ich das Moodboard unter Verwendung der Ideen, die wir besprochen haben, erstellt habe. Ich schrieb auch das CSS für die ‚Ziele‘-Seiten und stellte sicher, dass alle anderen Seiten kohärent waren. Ich codierte das HTML für die ‚Unsere Infos‘-Seite. Ich war gut für das Design geeignet, da ich Medien als Teil meiner A-Levels belegte. Für die Organisation plante ich viele der Besprechungen und erstellte ein Gantt-Diagramm."
+                        }
                     }
                 ]
             }
@@ -86,7 +131,12 @@
         "children": [
             {
                 "type": "h2",
-                "textContent": "Who Did What"
+                "textContent": {
+                    "en": "Who Did What",
+                    "es": "Quién hizo qué",
+                    "fr": "Qui a fait quoi",
+                    "de": "Wer hat was gemacht"
+                }
             },
             {
                 "type": "table",
@@ -115,19 +165,39 @@
                 "children": [
                     {
                         "type": "th",
-                        "textContent": "Pages"
+                        "textContent": {
+                            "en": "Pages",
+                            "es": "Páginas",
+                            "fr": "Pages",
+                            "de": "Seiten"
+                        }
                     },
                     {
                         "type": "th",
-                        "textContent": "HTML"
+                        "textContent": {
+                            "en": "HTML",
+                            "es": "HTML",
+                            "fr": "HTML",
+                            "de": "HTML"
+                        }
                     },
                     {
                         "type": "th",
-                        "textContent": "CSS"
+                        "textContent": {
+                            "en": "CSS",
+                            "es": "CSS",
+                            "fr": "CSS",
+                            "de": "CSS"
+                        }
                     },
                     {
                         "type": "th",
-                        "textContent": "JS/Node"
+                        "textContent": {
+                            "en": "JS/Node",
+                            "es": "JS/Node",
+                            "fr": "JS/Node",
+                            "de": "JS/Node"
+                        }
                     }
                 ]
             }
@@ -141,19 +211,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Home"
+                        "textContent": {
+                            "en": "Home",
+                            "es": "Inicio",
+                            "fr": "Accueil",
+                            "de": "Startseite"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     }
                 ]
             },
@@ -162,19 +252,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Zero Hunger"
+                        "textContent": {
+                            "en": "Zero Hunger",
+                            "es": "Cero Hambre",
+                            "fr": "Faim Zéro",
+                            "de": "Null Hunger"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": " "
+                        "textContent": {
+                            "en": " ",
+                            "es": " ",
+                            "fr": " ",
+                            "de": " "
+                        }
                     }
                 ]
             },
@@ -183,19 +293,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Climate Action"
+                        "textContent": {
+                            "en": "Climate Action",
+                            "es": "Acción Climática",
+                            "fr": "Action Climatique",
+                            "de": "Klimaschutz"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": " "
+                        "textContent": {
+                            "en": " ",
+                            "es": " ",
+                            "fr": " ",
+                            "de": " "
+                        }
                     }
                 ]
             },
@@ -204,19 +334,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Sustainable Cities"
+                        "textContent": {
+                            "en": "Sustainable Cities",
+                            "es": "Ciudades Sostenibles",
+                            "fr": "Villes Durables",
+                            "de": "Nachhaltige Städte"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": " "
+                        "textContent": {
+                            "en": " ",
+                            "es": " ",
+                            "fr": " ",
+                            "de": " "
+                        }
                     }
                 ]
             },
@@ -225,19 +375,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Sign Up"
+                        "textContent": {
+                            "en": "Sign Up",
+                            "es": "Registro",
+                            "fr": "S'inscrire",
+                            "de": "Anmelden"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     }
                 ]
             },
@@ -246,19 +416,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "Our Info"
+                        "textContent": {
+                            "en": "Our Info",
+                            "es": "Nuestra Información",
+                            "fr": "Nos Infos",
+                            "de": "Unsere Infos"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": " "
+                        "textContent": {
+                            "en": " ",
+                            "es": " ",
+                            "fr": " ",
+                            "de": " "
+                        }
                     }
                 ]
             },
@@ -267,19 +457,39 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "FAQ"
+                        "textContent": {
+                            "en": "FAQ",
+                            "es": "Preguntas Frecuentes",
+                            "fr": "FAQ",
+                            "de": "Häufige Fragen"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sylvain"
+                        "textContent": {
+                            "en": "Sylvain",
+                            "es": "Sylvain",
+                            "fr": "Sylvain",
+                            "de": "Sylvain"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     }
                 ]
             },
@@ -288,22 +498,43 @@
                 "children": [
                     {
                         "type": "td",
-                        "textContent": "General"
+                        "textContent": {
+                            "en": "General",
+                            "es": "General",
+                            "fr": "Général",
+                            "de": "Allgemein"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Sophie"
+                        "textContent": {
+                            "en": "Sophie",
+                            "es": "Sophie",
+                            "fr": "Sophie",
+                            "de": "Sophie"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Aaron"
+                        "textContent": {
+                            "en": "Aaron",
+                            "es": "Aaron",
+                            "fr": "Aaron",
+                            "de": "Aaron"
+                        }
                     },
                     {
                         "type": "td",
-                        "textContent": "Harley"
+                        "textContent": {
+                            "en": "Harley",
+                            "es": "Harley",
+                            "fr": "Harley",
+                            "de": "Harley"
+                        }
                     }
                 ]
             }
+            
         ]
     }
 ]

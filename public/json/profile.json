@@ -1,0 +1,119 @@
+[
+    {
+        "id": "settings-header",
+        "textContent": {
+            "en": "Profile Settings",
+            "es": "Configuración del Perfil",
+            "fr": "Paramètres du Profil",
+            "de": "Profileinstellungen"
+        }
+    },
+    {
+        "id": "profile-picture-lable",
+        "textContent": {
+            "en": "Profile Picture",
+            "es": "Foto de Perfil",
+            "fr": "Photo de Profil",
+            "de": "Profilbild"
+        }
+    },
+    {
+        "id": "remove-pfp",
+        "textContent": {
+            "en": "Remove PFP",
+            "es": "Eliminar Foto de Perfil",
+            "fr": "Supprimer la Photo de Profil",
+            "de": "Profilbild Entfernen"
+        }
+    },
+    {
+        "id": "Username-lable",
+        "textContent": {
+            "en": "Username",
+            "es": "Nombre de Usuario",
+            "fr": "Nom d'Utilisateur",
+            "de": "Benutzername"
+        }
+    },
+    {
+        "id": "FirstName-lable",
+        "textContent": {
+            "en": "First Name",
+            "es": "Nombre",
+            "fr": "Prénom",
+            "de": "Vorname"
+        }
+    },
+    {
+        "id": "LastName-lable",
+        "textContent": {
+            "en": "Last Name",
+            "es": "Apellido",
+            "fr": "Nom de Famille",
+            "de": "Nachname"
+        }
+    },
+    {
+        "id": "OldPassword-lable",
+        "textContent": {
+            "en": "Old Password",
+            "es": "Contraseña Anterior",
+            "fr": "Ancien Mot de Passe",
+            "de": "Altes Passwort"
+        }
+    },
+    {
+        "id": "NewPassword-lable",
+        "textContent": {
+            "en": "New Password",
+            "es": "Nueva Contraseña",
+            "fr": "Nouveau Mot de Passe",
+            "de": "Neues Passwort"
+        }
+    },
+    {
+        "id": "Language-lable",
+        "textContent": {
+            "en": "Language",
+            "es": "Idioma",
+            "fr": "Langue",
+            "de": "Sprache"
+        }
+    },
+    {
+        "id": "dark-mode-input-lable",
+        "textContent": {
+            "en": "Dark Mode",
+            "es": "Modo Oscuro",
+            "fr": "Mode Sombre",
+            "de": "Dunkelmodus"
+        }
+    },
+    {
+        "id": "two-factor-auth-lable",
+        "textContent": {
+            "en": "Enable Two-Factor Authentication",
+            "es": "Habilitar Autenticación en Dos Factores",
+            "fr": "Activer l'Authentification à Deux Facteurs",
+            "de": "Zwei-Faktor-Authentifizierung Aktivieren"
+        }
+    },
+    {
+        "id": "delete-account-lable",
+        "textContent": {
+            "en": "Delete Account",
+            "es": "Eliminar Cuenta",
+            "fr": "Supprimer le Compte",
+            "de": "Konto Löschen"
+        }
+    },
+    {
+        "id": "submit",
+        "textContent": {
+            "en": "Save Changes",
+            "es": "Guardar Cambios",
+            "fr": "Sauvegarder les Modifications",
+            "de": "Änderungen Speichern"
+        }
+    }
+]

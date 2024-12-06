@@ -51,7 +51,8 @@ const getBlogs = async () => {
         author.innerText = `${blog.FirstName}  ${blog.LastName}`
         author.href = 'javascript:void(0)'
         description.innerHTML = blog.description
-        img.src = 'assets/handsWithGlobe.jpg'
+        img.src = `/blog?UUID=${blog.UUID}&image=true`
+
 
 
         blogElement.setAttribute('id', 'slide')
@@ -73,6 +74,7 @@ const getBlogs = async () => {
         blogElement.onclick = () => {
             window.location.href = '/blog?UUID='+blogElement.getAttribute('uuid')
         }
+        
     }))
 
     if (Object.keys(blogUUIDs).length >= 4) {

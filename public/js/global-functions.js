@@ -16,7 +16,7 @@ class Loading {
 
     destroy = async () => {
         this.loadingOverlay.style.opacity = '0';
-        this.loadingOverlay.style.visibility = 'hidden'; 
+        this.loadingOverlay.style.visibility = 'hidden';
 
         await (new Promise(resolve => setTimeout(resolve, 1500)))
 
@@ -35,30 +35,50 @@ class Loading {
 //     const loadingOverlay = document.getElementById('loading-overlay');
 //     loadingOverlay.style.opacity = '1';
 //     loadingOverlay.style.visibility = 'shown'; 
-// }
+// }new Promise((resolve, reject) =>
 
-const addChildrenToID = async (entry, element = undefined) => {
-    if (element === undefined) { element = document.getElementById(entry.id) }
+
+const addChildrenToID = async (entry, element = undefined, parentIndicator) => {
+    const language = document.querySelector('html').lang
+    if (element === undefined) { element = document.querySelector(`${parentIndicator} #${entry.id}`) }
+
+
+
+    if (entry.children === undefined && Object.entries(entry).length > 1) {
+        if (!element) { return }
+        Object.entries(entry).splice(1, 1).forEach(([attribute, value]) => {
+            if (attribute === 'textContent' || attribute === 'title') {
+                element[attribute] = value[language]
+                return
+            }
+
+        })
+        return
+    }
 
     entry.children.forEach(child => {
+
         const childElement = document.createElement(child.type)
 
         Object.entries(child).forEach(([attribute, value]) => {
             if (attribute === 'type') { return }
             if (attribute === 'children') {
-                addChildrenToID(child, childElement)
+                addChildrenToID(child, childElement, parentIndicator)
+                return
+            }
+            if (attribute === 'textContent' || attribute === 'title') {
+                childElement[attribute] = value[language]
                 return
             }
 
-            
+
             childElement[attribute] = value;
             childElement.setAttribute(attribute, value)
         })
 
-
         element.appendChild(childElement)
+
     });
 
-    console.log(element)
 
 }

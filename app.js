@@ -51,10 +51,13 @@ app.use((req, res, next) => {
         req.session.darkMode = false
         req.session.Language = 'en'
     }
+
+
     req.session.views += 1
 
     req.session.save()
 
+    res.locals.message = req.query.error ? req.query.error : undefined
     res.locals.loggedIn = req.session.loggedIn
     res.locals.Language = req.session.Language
 
@@ -97,8 +100,7 @@ const logout = (req, res) => {
 
 //get 
 app.get('/', (req, res) => {
-    const object = req.query.error ? { "message": req.query.error } : {}
-    res.render("main.ejs", object)
+    res.render("main.ejs")
 })
 
 app.get('/about-us', (req, res) => {
@@ -375,7 +377,10 @@ app.post('/profile/details', reqAuth, handleFormData, reqData, async (req, res) 
         req.session.Language = updatedInfo["Language"]
         await user.setValue('Language', updatedInfo["Language"])
     }
-    if (updatedInfo.hasOwnProperty('TwoFactor')) { await user.setValue('TwoFactor', updatedInfo["TwoFactor"]) }
+    if (updatedInfo.hasOwnProperty('TwoFactor') && updatedInfo["TwoFactor"] === 'on' && user.getValue('TwoFactor') === 'off') {
+        await user.setValue('TwoFactor', updatedInfo["TwoFactor"])
+        await user.setUpFIDO()
+    }
 
 
     if (updatedInfo.hasOwnProperty('Username')) {

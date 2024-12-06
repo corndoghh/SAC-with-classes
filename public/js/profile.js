@@ -11,8 +11,14 @@ const confirmDelete = () => {
     }
 }
 
-document.getElementById("dark-mode-input").onclick = async () => { await toggleMode(); };
+document.getElementById("dark-mode-input").onclick = () => toggleMode();
 
+document.getElementById("two-factor-auth").onclick = async () => {
+
+    
+
+
+}
 
 const start = async () => {
 
@@ -47,6 +53,7 @@ const start = async () => {
     })).status !== 404) { document.querySelector('#profile-pic-preview').src = '/profile/pfp' }
 
     TwoFactor.checked = jsonData["TwoFactor"] === "on" ? true : false
+    TwoFactor.disabled = TwoFactor.checked ? true : false
     FirstName.placeholder = jsonData.FirstName
     LastName.placeholder = jsonData.LastName
     Username.placeholder = jsonData.Username
@@ -105,52 +112,9 @@ const start = async () => {
 
         console.log(response)
 
-
         if (response.status !== 200) { message.textContent = (await response.json())["error"]; return }
 
         window.location.href = "/profile"
-
-
-
-        // formData['ProfilePic'] = formData['ProfilePic'].name === '' ? '' : JSON.stringify(formData['ProfilePic'])
-
-
-        // if (formData.NewPassword && !formData.OldPassword) { message.textContent = 'You need to enter your old password before updating it'; return }
-
-        // if (!formData.NewPassword && formData.OldPassword) { message.textContent = 'No new password provided'; return }
-
-        // == TODO == add checks back
-
-        // for (item in formData) {
-        //     console.log(item, formData.hasOwnProperty(item) && !!formData[item])
-
-        //     if (item === "language" || item === 'TwoFactor') { continue }
-
-        //     if (!(formData.hasOwnProperty(item) && !!formData[item])) { continue }
-        //     if (!jsonData.hasOwnProperty(item)) { continue }
-
-        //     if (jsonData[item] === formData[item]) {
-        //         message.textContent = 'You cannot update a value to the existing value'
-        //         return
-        //     }
-
-        // }
-
-        // if (formData.NewPassword && formData.OldPassword === formData.NewPassword) { message.textContent = 'New password cannot be the same as the old one'; return }
-
-        // if (formData['ProfilePic'].name !== '') {
-        //     const imageData = new FormData();
-        //     imageData.append('image', formData['ProfilePic']);
-        //     await fetch('/upload-picture', {
-        //         method: 'post',
-        //         body: imageData,
-        //         credentials: 'same-origin'
-        //     })
-
-        // }
-        // return
-
-
     })
 }
 

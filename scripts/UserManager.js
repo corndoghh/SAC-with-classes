@@ -85,6 +85,11 @@ class User {
         return (await imageManager.getImage(filename)).buffer
     }
 
+    setUpFIDO = async () => {
+
+    }
+
+
 
 
     login = async (req) => {

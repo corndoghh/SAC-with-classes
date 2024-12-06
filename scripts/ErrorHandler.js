@@ -23,7 +23,7 @@ const ErrorHandling = (err, req, res) => {
     if (err instanceof WebError || req.headers.embedded) {
         return res.status(err.statusCode).json({ error: err.message });
     }
-    res.redirect(`/?error=${encodeURIComponent(err.message)}`);
+    res.redirect(`${err.returnLocation}?error=${encodeURIComponent(err.message)}`);
 }
 
 module.exports = {

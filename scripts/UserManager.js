@@ -1,6 +1,3 @@
-const UserError = require("../Errors/UserError")
-const UserErrorTypes = require("../Errors/UserErrorTypes")
-// const { readDatabase, deleteEntry, updateEntry, addEntry } = require("./DatabaseManager")
 const Crypto = require("crypto")
 const DatabaseManager = require("./DatabaseManager")
 const ImageManager = require("./ImageManager")
@@ -38,7 +35,7 @@ class User {
     addProperty = async (key) => {
         if (this.hasProperty(key)) { return }
 
-        this.#setValue(key, null)
+        await this.#setValue(key, null)
     }
 
     removeProperty = async (key) => {

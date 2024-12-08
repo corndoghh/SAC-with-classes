@@ -20,5 +20,10 @@ document.getElementById('form').addEventListener('submit', async (e) => {
 
     if (response.status !== 200) { message.textContent = (await response.json())["error"]; return }
 
-    window.location.href = (await response.json()).location
+    const jsonData = await response.json()
+
+    href = jsonData.location 
+    if (jsonData.message) { href += '?message='+jsonData.message }
+
+    window.location.href = href
 })

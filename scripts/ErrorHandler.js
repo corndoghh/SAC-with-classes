@@ -20,6 +20,9 @@ const WebErrorTypes = require("../Errors/WebErrorTypes");
  */
 const ErrorHandling = (err, req, res) => {
     req.headers['embedded'] = req.headers['embedded'] || false;
+    if (err instanceof WebError && !req.headers.embedded) {
+        return res.render('404.ejs')
+    }
     if (err instanceof WebError || req.headers.embedded) {
         return res.status(err.statusCode).json({ error: err.message });
     }

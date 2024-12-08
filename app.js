@@ -17,7 +17,7 @@ const { reqNoAuth, reqAuth, reqData, reqUser, reqBlog, ownBlog, handleFormData, 
 const Crypto = require('crypto')
 const FileStore = require('session-file-store')(session);
 const url = require('url');
-const { sendConfirmationEmail } = require("./scripts/EmailManager");
+const { sendConfirmationEmail, sendForgotPasswordEmail } = require("./scripts/EmailManager");
 
 const app = express();
 const PORT = 3000
@@ -52,12 +52,14 @@ app.use((req, res, next) => {
         req.session.Language = 'en'
     }
 
-
     req.session.views += 1
 
     req.session.save()
 
-    res.locals.message = req.query.error ? req.query.error : undefined
+    const { error, message } = req.query
+
+    res.locals.message = error ? error : message ? message : undefined
+
     res.locals.loggedIn = req.session.loggedIn
     res.locals.Language = req.session.Language
 
@@ -68,13 +70,11 @@ app.use(returnURL)
 
 //functions
 
-
 const checkMiddleware = (route, middlename) => {
     return app._router.stack
         .flatMap(layer => layer.route && layer.route.path === route ? layer.route.stack.filter(x => x.name === middlename) : [])
         .length > 0;
 }
-
 
 const notFound = (req, res) => { return ErrorHandling(new WebError(WebErrorTypes[404]), req, res) }
 
@@ -86,13 +86,19 @@ const authentication = async (req, res) => {
 
     const type = urlPath === "/login" ? "l" : urlPath === "/sign-up" ? "s" : urlPath === "/forgot-password" ? "f" : urlPath === "/add-account" ? "a" : "r"
 
-    if (
+    if (await (
         type === "r" &&
         ((token === undefined || email === undefined || tempCode === undefined) ||
-            await getHashedToken(email) !== token ||
-            !await doesPropertyExist(email, "tempCode") ||
-            await getUserValue(email, "tempCode") !== tempCode)
-    ) { res.json({ "Error": "Invalid password reset link" }); return }
+            (async () => {
+                const user = await userManager.getUser(email);
+                if (!user) { return true }
+                return (
+                    ((Crypto.createHash("sha256").update(user.getValue("UUID") + user.getValue("Email")).digest("hex")) !== token) ||
+                    !user.hasProperty('tempCode') ||
+                    user.getValue('tempCode') !== tempCode
+                )
+            })())
+    )) { res.json({ "Error": "Invalid password reset link" }); return }
 
     res.render("form-page.ejs", { type, token, email, tempCode, return_url: req.return_url })
 }
@@ -152,13 +158,11 @@ app.get('/verify', reqData, reqUser, async (req, res) => {
 
     const user = await userManager.getUser(email)
 
-    //TODO - json data 
     if (user.hasVerified()) { res.send("Email already verified"); return }
     if ((Crypto.createHash("sha256").update(user.getValue("UUID") + user.getValue("Email")).digest("hex")) !== token) { res.send("Invalid token"); return }
 
     await user.setValue('IsEmailVerified', true)
 
-    //DO TO what to do with clients after email verification
     res.redirect(user.hasAccount() ? '/login' : '/add-account')
 })
 
@@ -269,10 +273,8 @@ app.get("*", notFound)
 
 app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
     const { Username, Email, Password } = req.body
-    
-    if (!((Username || Email) && Password)) { res.json({ "Error": "Invalid data submitted" }); return }
+    //if (!((Username || Email) && Password)) { return ErrorHandling(new FormError(FormErrorTypes.MISSING_REQUIRED_FIELD), req, res) }
     const identifier = Username ? Username : Email
-
     const user = await userManager.getUser(identifier)
 
     if (!user.hasAccount() || !user.comparePasswordHash(Password)) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_CREDENTIALS, 400), req, res); }
@@ -287,12 +289,44 @@ app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
     req.session.save(() => { res.json({ 'location': req.return_url }) })
 })
 
-// app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
-//     const { email } = req.body
+app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
+    const { Email } = req.body
+    //if (!email) { return ErrorHandling(new FormError(FormErrorTypes.MISSING_REQUIRED_FIELD), req, res) }
+    const user = await userManager.getUser(Email)
+    if (!user.hasAccount()) {
+        return ErrorHandling(new UserError(UserErrorTypes.ACCOUNT_DOES_NOT_EXIST), req, res)
+    }
+    if (!user.hasVerified()) { return ErrorHandling(new UserError(UserErrorTypes.EMAIL_NOT_VERIFIED, 403), req, res); }
 
-//     res.send("Reset password email sent")
-// })
+    await sendForgotPasswordEmail(user)
 
+    res.json({ "message": "Reset password email sent", 'location': '/' })
+})
+
+app.post('/reset-password', reqData, reqNoAuth, reqUser, async (req, res) => {
+    const { token, email, tempCode, Password } = req.body
+    console.log(req.body)
+
+    const user = await userManager.getUser(email)
+
+    if (await (
+        ((token === undefined || email === undefined || tempCode === undefined) || Password == undefined ||
+            (async () => {
+                const user = await userManager.getUser(email);
+                if (!user) { return true }
+                return (
+                    ((Crypto.createHash("sha256").update(user.getValue("UUID") + email).digest("hex")) !== token) ||
+                    !user.hasProperty('tempCode') ||
+                    user.getValue('tempCode') !== tempCode
+                )
+            })())
+    )) { return ErrorHandling(new FormError(FormErrorTypes.INCORRECT_DATA_SENT), req, res) }
+
+    await user.removeProperty('tempCode')
+    await user.setPassword(Password)
+
+    res.json({ 'message': 'Password Successfully reset', 'location': '/login' })
+})
 
 
 app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
@@ -328,7 +362,7 @@ app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
 
     await user.createAccount(Username, Password)
 
-    res.json({ 'location': req.return_url })
+    res.json({ 'message': 'Please verify email address', 'location': req.return_url })
 })
 
 app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
@@ -346,7 +380,7 @@ app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
 
     if (user.hasVerified()) { await user.login(req) }
 
-    req.session.save(() => { res.json({ 'location': req.return_url }) })
+    req.session.save(() => { res.json({ 'message': 'Account Added!', 'location': req.return_url }) })
 })
 
 
@@ -370,6 +404,7 @@ app.post('/profile/details', reqAuth, handleFormData, reqData, async (req, res) 
         }
         else { return ErrorHandling(new UserError(UserErrorTypes.INVALID_PASSWORD, 409), req, res) }
     }
+    
     //Name update
     if (updatedInfo.hasOwnProperty('FirstName')) { await user.setValue('FirstName', updatedInfo["FirstName"]) }
     if (updatedInfo.hasOwnProperty('LastName')) { await user.setValue('LastName', updatedInfo["LastName"]) }

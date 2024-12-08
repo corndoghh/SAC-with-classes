@@ -22,6 +22,12 @@ const handleFormData = async (req, _res, next) => {
     }
 }
 
+const returnURL = (req, res, next) => {
+    let { return_url } = req.method === "GET" ? req.query : req.body;
+    req.return_url = return_url === undefined ? "/" : return_url
+    next()
+}
+
 const reqNoAuth = (req, res, next) => {
     return !req.session.loggedIn ?
     next() :
@@ -79,5 +85,6 @@ module.exports = {
     reqUser,
     reqBlog,
     ownBlog,
-    handleFormData
+    handleFormData,
+    returnURL
 }

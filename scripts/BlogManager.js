@@ -92,7 +92,13 @@ class Blog {
             "LastName": user.getValue('LastName')
         }
     }
-    getBlogImage = async () => { return (await imageManager.getImage(this.#UUID)).buffer }
+    getBlogImage = async () => {
+        if (!(await this.hasBlogImage())) { return (await imageManager.getImage('placeholder')).buffer } 
+        return (await imageManager.getImage(this.#UUID)).buffer
+    }
+
+    hasBlogImage = async () => { return await imageManager.doesImageExist(this.#UUID) }
+
     updateBlogImage = async (image) => {
         image.filename.filename = this.#UUID + '.' +  image.filename.filename.split('.').pop()
         await imageManager.deleteImage(this.#UUID)

@@ -11,7 +11,7 @@ const ImageManager = require("./scripts/ImageManager")
 const { ErrorHandling, UserError, UserErrorTypes, BlogError, BlogErrorTypes, ImageError, ImageErrorTypes, FormError, FormErrorTypes, WebError, WebErrorTypes } = require('./scripts/ErrorHandler')
 
 //Middleware
-const { reqNoAuth, reqAuth, reqData, reqUser, reqBlog, ownBlog, handleFormData } = require('./scripts/Middleware')
+const { reqNoAuth, reqAuth, reqData, reqUser, reqBlog, ownBlog, handleFormData, returnURL } = require('./scripts/Middleware')
 
 //Misc
 const Crypto = require('crypto')
@@ -64,7 +64,17 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use(returnURL)
+
 //functions
+
+
+const checkMiddleware = (route, middlename) => {
+    return app._router.stack
+        .flatMap(layer => layer.route && layer.route.path === route ? layer.route.stack.filter(x => x.name === middlename) : [])
+        .length > 0;
+}
+
 
 const notFound = (req, res) => { return ErrorHandling(new WebError(WebErrorTypes[404]), req, res) }
 
@@ -73,8 +83,6 @@ const authentication = async (req, res) => {
     const { token, email, tempCode } = req.query
 
     const urlPath = url.parse(req.url).pathname
-
-    const { return_url } = req.query
 
     const type = urlPath === "/login" ? "l" : urlPath === "/sign-up" ? "s" : urlPath === "/forgot-password" ? "f" : urlPath === "/add-account" ? "a" : "r"
 
@@ -86,15 +94,19 @@ const authentication = async (req, res) => {
             await getUserValue(email, "tempCode") !== tempCode)
     ) { res.json({ "Error": "Invalid password reset link" }); return }
 
-    res.render("form-page.ejs", { type, token, email, tempCode, return_url })
+    res.render("form-page.ejs", { type, token, email, tempCode, return_url: req.return_url })
 }
 
 
 
-const logout = (req, res) => {
+const logout = async (req, res) => {
     req.session.UUID = undefined
     req.session.loggedIn = false
-    req.session.save(() => res.redirect("/"))
+    const origin = url.parse(req.headers.referer)
+    if (origin.pathname === 'login' || checkMiddleware(origin.pathname, "reqAuth")) {
+        return req.session.save(() => res.redirect("/"))
+    }
+    req.session.save(() => res.redirect(origin.path))
 }
 
 
@@ -136,13 +148,13 @@ app.get('/forgot-password', reqNoAuth, authentication)
 app.get('/reset-password', reqNoAuth, authentication)
 
 app.get('/verify', reqData, reqUser, async (req, res) => {
-    const {token, email} = req.query
-    
+    const { token, email } = req.query
+
     const user = await userManager.getUser(email)
 
     //TODO - json data 
     if (user.hasVerified()) { res.send("Email already verified"); return }
-    if ((Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")) !== token) { res.send("Invalid token"); return }
+    if ((Crypto.createHash("sha256").update(user.getValue("UUID") + user.getValue("Email")).digest("hex")) !== token) { res.send("Invalid token"); return }
 
     await user.setValue('IsEmailVerified', true)
 
@@ -159,14 +171,14 @@ app.get('/profile', reqAuth, (req, res) => {
 
 app.get('/profile/details', reqAuth, async (req, res) => {
     const user = await userManager.getUser(req.session.UUID)
-    
+
     const Username = user.getValue("Username")
     const FirstName = user.getValue("FirstName")
     const LastName = user.getValue("LastName")
     const TwoFactor = user.getValue("TwoFactor")
     const Language = user.getValue("Language")
-    
-    
+
+
     res.setHeader('Cache-Control', 'no-store');
     res.json({ Username, FirstName, LastName, TwoFactor, Language })
 })
@@ -186,11 +198,11 @@ app.get('/profile/dark-mode', (req, res) => {
 })
 
 app.get('/profile/:details', reqData, async (req, res) => {
-    if (req.query.lang !== undefined && ['en','es','fr','de'].includes(req.query.lang)) {
+    if (req.query.lang !== undefined && ['en', 'es', 'fr', 'de'].includes(req.query.lang)) {
         req.session.Language = req.query.lang
-        if (req.session.loggedIn && userManager.doesUserExist(req.session.UUID)) { (await userManager.getUser(req.session.UUID)).setValue('Language', req.query.lang) } 
+        if (req.session.loggedIn && userManager.doesUserExist(req.session.UUID)) { (await userManager.getUser(req.session.UUID)).setValue('Language', req.query.lang) }
         return req.session.save(() => {
-            return res.json({ 'Message': 'Language Updated' })
+            return res.json({ 'message': 'Language Updated' })
         })
     }
     return ErrorHandling(new FormError(FormErrorTypes.INCORRECT_DATA_SENT, 409), req, res)
@@ -198,7 +210,7 @@ app.get('/profile/:details', reqData, async (req, res) => {
 
 app.get('/blog', reqData, async (req, res) => {
     const { UUID } = req.query
-    
+
     if (UUID === undefined) { return ErrorHandling(new BlogError(BlogErrorTypes.INVALID_REQUEST, 409), req, res) }
 
 
@@ -218,7 +230,7 @@ app.get('/blog', reqData, async (req, res) => {
     const blogData = {
         ...blog.getAllValues(),
         ...(await blog.getUsersname()),
-        ...{isOwner: blog.getAuthor() === req.session.UUID}
+        ...{ isOwner: blog.getAuthor() === req.session.UUID }
     }
 
     if (req.headers["content-type"] === 'application/json') {
@@ -226,7 +238,7 @@ app.get('/blog', reqData, async (req, res) => {
         return
     }
 
-    res.render('blog.ejs', {blogData})
+    res.render('blog.ejs', { blogData })
 })
 
 app.get('/blog/edit', reqData, reqAuth, reqBlog, ownBlog, async (req, res) => {
@@ -238,12 +250,12 @@ app.get('/blog/edit', reqData, reqAuth, reqBlog, ownBlog, async (req, res) => {
     const blogData = {
         ...blog.getAllValues(),
         ...(await blog.getUsersname()),
-        ...{isOwner: blog.getAuthor() === req.session.UUID}
+        ...{ isOwner: blog.getAuthor() === req.session.UUID }
     }
-    
-    res.render('edit-blog.ejs', {blogData})
 
-}) 
+    res.render('edit-blog.ejs', { blogData })
+
+})
 
 app.get('/blog/create', reqAuth, async (req, res) => {
     res.render('edit-blog.ejs', {})
@@ -256,8 +268,8 @@ app.get("*", notFound)
 //post
 
 app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
-    const { Username, Email, Password, returnUrl } = req.body
-
+    const { Username, Email, Password } = req.body
+    
     if (!((Username || Email) && Password)) { res.json({ "Error": "Invalid data submitted" }); return }
     const identifier = Username ? Username : Email
 
@@ -267,42 +279,34 @@ app.post("/auth", reqData, reqUser, reqNoAuth, async (req, res) => {
 
     if (!user.hasVerified()) { return ErrorHandling(new UserError(UserErrorTypes.EMAIL_NOT_VERIFIED, 403), req, res); }
 
-    //if (!(await doesUserHaveAccount(identifier)) || !(await isPasswordCorrect(identifier, Password))) { res.send("Incorrect Username or Password"); return } 
-
     await user.login(req)
 
     console.log(`Successfully logged in as ${identifier} using password ${Password}`)
 
-    
-    req.session.save(() => { res.json({ 'location': `${(returnUrl !== '' && returnUrl !== undefined)  ? returnUrl : '/'}` }) })
-    //DO TO what to do with clients after successfull authentication...
-    //res.redirect("/")
+
+    req.session.save(() => { res.json({ 'location': req.return_url }) })
 })
 
-app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
-    const { email } = req.body
+// app.post('/forgot-password', reqData, reqUser, reqNoAuth, async (req, res) => {
+//     const { email } = req.body
 
-
-    //await sendForgotPasswordEmail(email)
-
-    //DO TO what to do with clients after password reset email sent
-    res.send("Reset password email sent")
-})
+//     res.send("Reset password email sent")
+// })
 
 
 
 app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
-    let { Email, FirstName, MiddleNames, LastName, Comment, Username, Password, returnUrl } = req.body
+    let { Email, FirstName, MiddleNames, LastName, Comment, Username, Password } = req.body
 
     if (
         Email === undefined ||
         FirstName === undefined ||
         LastName === undefined ||
         !String(Email)
-        .toLowerCase()
-        .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_SIGNUP_CREDENTIALS, 422), req, res); }
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_SIGNUP_CREDENTIALS, 422), req, res); }
 
     MiddleNames = MiddleNames ? MiddleNames : []
 
@@ -311,27 +315,24 @@ app.post("/sign-up", reqData, reqNoAuth, async (req, res) => {
     if (Username === '' || Username === undefined || Password === '' || Password === undefined) {
         const user = await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment);
         await sendConfirmationEmail(user)
-        return res.json({ 'Message': "You are signed up for the newsletter", 'location': `${(returnUrl !== '' && returnUrl !== undefined)  ? returnUrl : '/'}`  })
+        return res.json({ 'message': "You are signed up for the newsletter", 'location': req.return_url })
     }
 
-    //TODO - handle newsletter sign up 
-    
     Username = Username.toLowerCase()
-    
+
     if (await userManager.doesUserExist(Username)) { return ErrorHandling(new UserError(UserErrorTypes.USERNAME_TAKEN, 409), req, res); }
-    
+
     const user = await userManager.addUser(Email, FirstName, MiddleNames, LastName, Comment);
-    
+
     await sendConfirmationEmail(user)
-    
+
     await user.createAccount(Username, Password)
 
-    //DO TO what to do with clients after account created
-    res.json({ 'location': `${(returnUrl !== '' && returnUrl !== undefined)  ? returnUrl : '/'}` })
+    res.json({ 'location': req.return_url })
 })
 
 app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
-    let { Email, Username, Password, returnUrl } = req.body
+    let { Email, Username, Password } = req.body
     if (Email === undefined || Username === undefined || Password === undefined) { return ErrorHandling(new UserError(UserErrorTypes.INCORRECT_SIGNUP_CREDENTIALS, 422), req, res); }
     Username = Username.toLowerCase()
 
@@ -345,8 +346,7 @@ app.post("/add-account", reqData, reqUser, reqNoAuth, async (req, res) => {
 
     if (user.hasVerified()) { await user.login(req) }
 
-    //DO TO what to do with clients after account created
-    req.session.save(() => { res.json({ 'location': `${(returnUrl !== '' && returnUrl !== undefined)  ? returnUrl : '/'}` }) })
+    req.session.save(() => { res.json({ 'location': req.return_url }) })
 })
 
 
@@ -354,9 +354,9 @@ app.post('/profile/details', reqAuth, handleFormData, reqData, async (req, res) 
 
     const user = await userManager.getUser(req.session.UUID)
 
-    if (req.body['remove-pfp'] === true) { await user.deletePFP(); return res.status(200).json({ "all": "good" })}
-    
-    
+    if (req.body['remove-pfp'] === true) { await user.deletePFP(); return res.status(200).json({ "message": "good", "location": req.return_url }) }
+
+
     const updatedInfo = Object.fromEntries(Object.entries(req.body).filter(([i, x]) => x !== ''))
 
 
@@ -368,12 +368,12 @@ app.post('/profile/details', reqAuth, handleFormData, reqData, async (req, res) 
             if (updatedInfo["OldPassword"] !== updatedInfo["NewPassword"]) { await user.setPassword(updatedInfo["NewPassword"]) }
             else { return ErrorHandling(new UserError(UserErrorTypes.SAME_PASSWORD, 409), req, res) }
         }
-        else { return ErrorHandling(new UserError(UserErrorTypes.INVALID_PASSWORD, 409), req, res) }        
+        else { return ErrorHandling(new UserError(UserErrorTypes.INVALID_PASSWORD, 409), req, res) }
     }
     //Name update
     if (updatedInfo.hasOwnProperty('FirstName')) { await user.setValue('FirstName', updatedInfo["FirstName"]) }
     if (updatedInfo.hasOwnProperty('LastName')) { await user.setValue('LastName', updatedInfo["LastName"]) }
-    if (updatedInfo.hasOwnProperty('Language') && ['en','es','fr','de'].includes(updatedInfo['Language'])) {
+    if (updatedInfo.hasOwnProperty('Language') && ['en', 'es', 'fr', 'de'].includes(updatedInfo['Language'])) {
         req.session.Language = updatedInfo["Language"]
         await user.setValue('Language', updatedInfo["Language"])
     }
@@ -394,16 +394,14 @@ app.post('/profile/details', reqAuth, handleFormData, reqData, async (req, res) 
         else { return ErrorHandling(new ImageError(ImageErrorTypes.BUFFER_NOT_IMAGE, 409), req, res) }
     }
 
-    res.status(200).json({ "Message": "good" })
+    res.status(200).json({ "message": "good", "location": req.return_url })
 })
 
 
 app.post('/profile/dark-mode', reqData, (req, res) => {
     const { darkMode } = req.body;
     req.session.darkMode = darkMode
-    req.session.save(() => {
-        res.json({ "Message": "updated dark mode" })
-    })
+    req.session.save(() => { res.json({ "message": "updated dark mode" }) })
 })
 
 
@@ -414,7 +412,7 @@ app.post('/blog/create', reqAuth, handleFormData, reqData, async (req, res) => {
 
     const { title, content, description } = req.body
 
-    const blogData = Object.entries({title,content,description}).filter(([i, x]) => (x !== undefined && x !== ''))
+    const blogData = Object.entries({ title, content, description }).filter(([i, x]) => (x !== undefined && x !== ''))
 
 
     // ===== Data Validation ===== 
@@ -430,19 +428,19 @@ app.post('/blog/create', reqAuth, handleFormData, reqData, async (req, res) => {
 
     if (!blog) { return ErrorHandling(new BlogError(BlogErrorTypes.BLOG_ALREADY_EXISTS, 409), req, res) }
 
-    res.json({ 'location': '/blog?UUID='+blog.getUUID() })
+    res.json({ 'location': '/blog?UUID=' + blog.getUUID() })
 })
 
-app.post('/blog/delete', reqAuth, reqData, reqBlog, ownBlog, async (req, res) => { await blogManager.removeBlog(req.body.UUID); res.json({'Message': 'removed', 'location': '/blogs'})})
+app.post('/blog/delete', reqAuth, reqData, reqBlog, ownBlog, async (req, res) => { await blogManager.removeBlog(req.body.UUID); res.json({ 'message': 'removed', 'location': '/blogs' }) })
 
 app.post('/blog/edit', reqAuth, handleFormData, reqData, reqBlog, ownBlog, async (req, res) => {
 
     const { title, content, description, UUID } = req.body;
-    
+
     console.log(content)
 
-    const edit = Object.entries({title,content,description}).filter(([i, x]) => x !== undefined)
-    
+    const edit = Object.entries({ title, content, description }).filter(([i, x]) => x !== undefined)
+
     // ===== Data Validation ===== 
 
     if (edit.length !== 3) { return ErrorHandling(new BlogError(BlogErrorTypes.USER_MISSING_DATA, 409), req, res) }
@@ -452,12 +450,12 @@ app.post('/blog/edit', reqAuth, handleFormData, reqData, reqBlog, ownBlog, async
     const blog = await blogManager.getBlog(UUID)
     await blog.setValues(Object.fromEntries(edit))
     if (req.image) {
-        if (ImageManager.isImage(req.image.buffer)) {await blog.updateBlogImage(req.image)}
+        if (ImageManager.isImage(req.image.buffer)) { await blog.updateBlogImage(req.image) }
         else { return ErrorHandling(new ImageError(ImageErrorTypes.BUFFER_NOT_IMAGE, 409), req, res) }
 
     }
-    console.log('/blog?UUID='+UUID)
-    res.json({ 'location': '/blog?UUID='+blog.getUUID() })
+    console.log('/blog?UUID=' + UUID)
+    res.json({ 'location': '/blog?UUID=' + blog.getUUID() })
 
 })
 
@@ -501,13 +499,13 @@ const test = async () => {
 
     // if (user) {
     //     const usersBlogs = await blogManager.getUsersBlogs(user)
-    
+
     //     console.log(await blogManager.addBlog(user, 'NceaceaEaaaaaaaaaaaaaaaaaW', 'very aaaaaNaaaaEceaceaW', 'holy caaaaaeaceeeeeeashit'), "a")
-    
+
     //     usersBlogs.forEach((blog) => console.log(blog.getAllValues()));
-    
+
     //     //await blogManager.removeBlog(usersBlogs[1]);
-    
+
     //     (await blogManager.getUsersBlogs(user)).forEach((blog) => console.log(blog.getAllValues()))
     // }
 
@@ -515,3 +513,5 @@ const test = async () => {
 }
 
 test()
+
+

@@ -11,11 +11,17 @@ const confirmDelete = () => {
     }
 }
 
-document.getElementById("dark-mode-input").onclick = async () => { await toggleMode(); };
+document.getElementById("dark-mode-input").onclick = () => toggleMode();
 
+document.getElementById("two-factor-auth").onclick = async () => {
+
+    
+
+
+}
 
 const start = async () => {
-    
+
     const loading = new Loading()
 
     const requestHeaders = {
@@ -35,6 +41,8 @@ const start = async () => {
     const LastName = document.querySelector('#LastName')
     const Username = document.querySelector('#Username')
     const TwoFactor = document.querySelector('#two-factor-auth')
+    const Language = document.querySelector('#Language')
+
 
     if ((await fetch('/profile/pfp', {
         method: 'get',
@@ -45,73 +53,68 @@ const start = async () => {
     })).status !== 404) { document.querySelector('#profile-pic-preview').src = '/profile/pfp' }
 
     TwoFactor.checked = jsonData["TwoFactor"] === "on" ? true : false
+    TwoFactor.disabled = TwoFactor.checked ? true : false
     FirstName.placeholder = jsonData.FirstName
     LastName.placeholder = jsonData.LastName
     Username.placeholder = jsonData.Username
 
+    Language.selectedIndex = {
+        'en': 0,
+        'es': 1,
+        'fr': 2,
+        'de': 3
+    }[jsonData.Language]
+
     loading.destroy()
 
-    document.querySelector(`#form`).addEventListener("submit", async (e) => {
+    const form = document.querySelector(`#form`)
+
+    form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            console.log('kep')
+            form.requestSubmit()
+            
+        }
+    });
+
+    form.addEventListener("submit", async (e) => {
         e.preventDefault()
+        const fetchData = new FormData()
 
-        const formData = Object.fromEntries(new FormData(e.target))
+        if (e.submitter !== null && e.submitter.id === 'remove-pfp') { fetchData.append('json', JSON.stringify({ 'remove-pfp': true })) }
+        else {
+            const formData = Object.fromEntries(new FormData(e.target))
 
-        const message = document.querySelector('#message')
+            !formData['TwoFactor'] ? formData['TwoFactor'] = 'off' : formData['TwoFactor'] = 'on';
+            formData['ProfilePic'].name ? fetchData.append('ProfilePic', formData['ProfilePic']) : formData['ProfilePic'] = '';
 
-        if (!formData['TwoFactor']) { formData['TwoFactor'] = 'off' }
+            fetchData.append('json', JSON.stringify(formData))
 
-        if (formData.NewPassword && !formData.OldPassword) { message.textContent = 'You need to enter your old password before updating it'; return }
-
-        if (!formData.NewPassword && formData.OldPassword) { message.textContent = 'No new password provided'; return }
-
-        for (item in formData) {
-            console.log(item, formData.hasOwnProperty(item) && !!formData[item])
-
-            if (item === "language" || item === 'TwoFactor') { continue }
-
-            if (!(formData.hasOwnProperty(item) && !!formData[item])) { continue }
-            if (!jsonData.hasOwnProperty(item)) { continue }
-
-            if (jsonData[item] === formData[item]) {
-                message.textContent = 'You cannot update a value to the existing value'
-                return
-            }
-
+            console.log(fetchData)
         }
-
-        if (formData.NewPassword && formData.OldPassword === formData.NewPassword) { message.textContent = 'New password cannot be the same as the old one'; return }
-
-        if (formData['ProfilePic'].name !== '') {
-            const imageData = new FormData();
-            imageData.append('image', formData['ProfilePic']);
-
-            await fetch('/upload-picture', {
-                method: 'post',
-                body: imageData,
-                credentials: 'same-origin'
-            })
-
-        }
-
-        message.textContent = ''
-
-        console.log(formData.language)
 
         const loading = new Loading()
 
-        const response = await fetch('/update-details', {
+        const response = await fetch('/profile/details', {
             method: "post",
-            headers: requestHeaders,
             credentials: "same-origin",
-            body: JSON.stringify(formData)
+            headers: {
+                "Embedded": 'true'
+            },
+            body: fetchData
         })
 
         loading.destroy()
 
-        if (response.status === 409) { message.textContent = (await response.json())["error"]; return }
+        const message = document.querySelector('#message')
+        message.textContent = ''
+
+        console.log(response)
+
+        if (response.status !== 200) { message.textContent = (await response.json())["error"]; return }
 
         window.location.href = "/profile"
-
     })
 }
 

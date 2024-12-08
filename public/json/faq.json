@@ -1,0 +1,159 @@
+[
+    {
+        "id": "container",
+        "children": [
+            {
+                "type": "h1",
+                "innerHTML": {
+                    "en": "FAQ",
+                    "es": "Preguntas Frecuentes",
+                    "fr": "FAQ",
+                    "de": "Häufige Fragen"
+                }
+            },
+            {
+                "id": "bios",
+                "children": [
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Question:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Pregunta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Question :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Frage:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "<b>Answer:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "es": "<b>Respuesta:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "fr": "<b>Réponse :</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi",
+                                    "de": "<b>Antwort:</b> Lorem ipsum dolor sit amet. Vel reprehenderit voluptatum At dolores animi eos omnis voluptas est nulla veritatis et minus nostrum rem enim quis ea explicabo sequi"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

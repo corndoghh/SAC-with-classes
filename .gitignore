@@ -1,4 +1,7 @@
 node_modules/
 package-lock.json
 sessions/
-json/users.json
+uploads/
+json/
+blogs/
+pfp/

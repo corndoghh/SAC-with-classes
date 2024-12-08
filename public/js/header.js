@@ -19,6 +19,15 @@ sidebarToggle.addEventListener('click', () => {
 
 })
 
+const changeLanguage = async (e) => {
+    const response = await fetch('/profile/:details?lang=' + e.target.value, {
+        method: 'get',
+        credentials: 'same-origin'
+    })
+    if (response.status === 200) { window.location.reload() }
+}
+
+
 const handleScreenChange = (e) => {
 
     const header = document.querySelector('#includes header')
@@ -29,8 +38,6 @@ const handleScreenChange = (e) => {
     } else {
         header.style.width = '0px'
         header.style.borderRightStyle = 'none'
-
-        
 
         
     }

@@ -1,0 +1,140 @@
+[
+    {
+        "id": "title",
+        "textContent": {
+            "en": "SAC Website",
+            "es": "Sitio Web SAC",
+            "fr": "Site Web SAC",
+            "de": "SAC Webseite"
+        }
+    },
+    {
+        "id": "nav-links",
+        "children": [
+            {
+                "type": "a",
+                "textContent": {
+                    "en": "Home",
+                    "es": "Inicio",
+                    "fr": "Accueil",
+                    "de": "Startseite"
+                },
+                "href": "/"
+            },
+            {
+                "type": "a",
+                "textContent": {
+                    "en": "About Us",
+                    "es": "Sobre Nosotros",
+                    "fr": "À Propos",
+                    "de": "Über Uns"
+                },
+                "href": "/about-us"
+
+            },
+            {
+                "type": "a",
+                "textContent": {
+                    "en": "FAQ",
+                    "es": "Preguntas Frecuentes",
+                    "fr": "FAQ",
+                    "de": "Häufige Fragen"
+                },
+                "href": "/faq"
+
+            },
+            {
+                "type": "a",
+                "textContent": {
+                    "en": "Blogs",
+                    "es": "Blogs",
+                    "fr": "Blogs",
+                    "de": "Blogs"
+                },
+                "href": "/blogs"
+            },
+            {
+                "id": "dropdown",
+                "class": "dropdown"
+            }
+        ]
+    },
+    {
+        "id": "dropdown",
+        "children": [
+            {
+                "type": "button",
+                "textContent": {
+                    "en": "Our Goals",
+                    "es": "Nuestros Objetivos",
+                    "fr": "Nos Objectifs",
+                    "de": "Unsere Ziele"
+                },
+                "class": "dropbtn"
+            },
+            {
+                "class": "dropdown-content",
+                "type": "div",
+                "children": [
+                    {
+                        "type": "a",
+                        "textContent": {
+                            "en": "Climate Action",
+                            "es": "Acción Climática",
+                            "fr": "Action Climatique",
+                            "de": "Klimaschutz"
+                        },
+                        "href": "/goals/climate-change"
+                    },
+                    {
+                        "type": "a",
+                        "textContent": {
+                            "en": "Sustainable Cities",
+                            "es": "Ciudades Sostenibles",
+                            "fr": "Villes Durables",
+                            "de": "Nachhaltige Städte"
+                        },
+                        "href": "/goals/sustainable-cities"
+                    },
+                    {
+                        "type": "a",
+                        "textContent": {
+                            "en": "Zero Hunger",
+                            "es": "Hambre Cero",
+                            "fr": "Faim Zéro",
+                            "de": "Null Hunger"
+                        },
+                        "href": "/goals/zero-hunger"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "Settings",
+        "title": {
+            "en": "Settings",
+            "es": "Configuraciones",
+            "fr": "Paramètres",
+            "de": "Einstellungen"
+        }
+    },
+    {
+        "id": "SignUp",
+        "title": {
+            "en": "Sign Up",
+            "es": "Regístrate",
+            "fr": "S'inscrire",
+            "de": "Anmelden"
+        }
+    },
+    {
+        "id": "Logout",
+        "title": {
+            "en": "Logout",
+            "es": "Cerrar Sesión",
+            "fr": "Déconnexion",
+            "de": "Abmelden"
+        }
+    }
+]

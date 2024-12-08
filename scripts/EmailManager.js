@@ -1,10 +1,10 @@
 const nm = require('nodemailer')
 const fs = require("fs/promises")
 const { JSDOM } = require("jsdom")
-const { getUser, doesUserExist, getHashedToken, setUserValue, doesPropertyExist, addUserProperty } = require("./UserManager")
-const EmailError = require("./Errors")
-const UserError = require("./Errors")
 const Crypto = require("crypto")
+const UserManager = require('./UserManager')
+
+const userManager = new UserManager()
 
 
 const transporter = nm.createTransport({
@@ -42,35 +42,34 @@ const sendMail = async (recipient, subject, htmlContent) => {
   console.log(info.messageId)
 }
 
-// module.exports.sendConfirmationEmail = async (recipient) => {
-//     if (!(await doesUserExist(recipient))) { throw new UserError("User does not exist") }
+/**
+ * 
+ * @param {User} user 
+ */
+module.exports.sendConfirmationEmail = async (user) => {
+ 
   
-//     const user = await getUser(recipient)
+    const hashToken = Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")
   
-//     const hashToken = await getHashedToken(recipient)
+    const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/confimation.html', "utf-8"))
+    dom.window.document.getElementById("custom-name").innerHTML = `Hello, ${user["FirstName"]}`
+    dom.window.document.getElementById("confirmation-URL").setAttribute("href", "http://localhost:3000/verify?token="+hashToken+"&email="+user.getValue("Email"))
+    dom.window.document.getElementById("unsubscribe-URL").setAttribute("href", "http://localhost:3000/unsubscribe?token="+hashToken+"&email="+user.getValue("Email"))
   
-//     const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/confimation.html', "utf-8"))
-//     dom.window.document.getElementById("custom-name").innerHTML = `Hello, ${user["FirstName"]}`
-//     dom.window.document.getElementById("confirmation-URL").setAttribute("href", "http://localhost:3000/confirm?token="+hashToken+"&email="+user["Email"])
-//     dom.window.document.getElementById("unsubscribe-URL").setAttribute("href", "http://localhost:3000/unsubscribe?token="+hashToken+"&email="+user["Email"])
+    await sendMail(user.getValue("Email"), "Newsletter Signup Confirmation", dom.window.document.documentElement.outerHTML)
+  }
   
-//     await sendMail(user["Email"], "Newsletter Signup Confirmation", dom.window.document.documentElement.outerHTML)
-//   }
+  module.exports.sendForgotPasswordEmail = async (user) => {
   
-//   module.exports.sendForgotPasswordEmail = async (recipient) => {
-//     if (!(await doesUserExist(recipient))) { throw new UserError("User does not exist") }
+    const hashToken = Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")
+    const tempCode = crypto.randomUUID()
   
-//     const user = await getUser(recipient)
+    if (!(await doesPropertyExist(user["Email"], "tempCode"))) { await addUserProperty(user["Email"], "tempCode") }
   
-//     const hashToken = await getHashedToken(recipient)
-//     const tempCode = crypto.randomUUID()
+    await setUserValue(user["Email"], "tempCode", tempCode)
   
-//     if (!(await doesPropertyExist(user["Email"], "tempCode"))) { await addUserProperty(user["Email"], "tempCode") }
+    const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/forgot-password.html', "utf-8"))
+    dom.window.document.getElementById("reset-URL").setAttribute("href", "http://localhost:3000/reset-password?token="+hashToken+"&email="+user["Email"]+"&tempCode="+tempCode)
   
-//     await setUserValue(user["Email"], "tempCode", tempCode)
-  
-//     const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/forgot-password.html', "utf-8"))
-//     dom.window.document.getElementById("reset-URL").setAttribute("href", "http://localhost:3000/reset-password?token="+hashToken+"&email="+user["Email"]+"&tempCode="+tempCode)
-  
-//     await sendMail(user["Email"], "Reset Password", dom.window.document.documentElement.outerHTML)
-//   }
+    await sendMail(user["Email"], "Reset Password", dom.window.document.documentElement.outerHTML)
+  }

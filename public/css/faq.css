@@ -105,8 +105,33 @@
     #mainPage #container {
         margin: 10px;
         margin-top: 5px;
-        
     }
+}
 
-    
+
+
+#mainPage #container button{
+    background-color: rgba(238, 219, 190, 0.75);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: Verdana;
+    float: right;
+}
+
+#mainPage #container h3{
+    padding-left: 60px;
+}
+
+#mainPage #container form{
+    padding-left: 40px;
+    margin-top: -75px;
+}
+
+#mainPage #container input{
+    width: 1475px;
+    height: 150px;
 }

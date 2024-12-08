@@ -98,7 +98,7 @@ const authentication = async (req, res) => {
                     user.getValue('tempCode') !== tempCode
                 )
             })())
-    )) { res.json({ "Error": "Invalid password reset link" }); return }
+    )) { return ErrorHandling(new FormError(FormErrorTypes.INCORRECT_DATA_SENT), req, res) }
 
     res.render("form-page.ejs", { type, token, email, tempCode, return_url: req.return_url })
 }

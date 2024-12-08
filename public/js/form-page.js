@@ -1,6 +1,8 @@
 document.getElementById('form').addEventListener('submit', async (e) => {
     e.preventDefault()
 
+    const loading = new Loading()
+
     const formData = Object.fromEntries(new FormData(e.target))
 
     console.log(JSON.stringify(formData))
@@ -14,6 +16,8 @@ document.getElementById('form').addEventListener('submit', async (e) => {
         },
         body: JSON.stringify(formData)
     })
+
+    loading.destroy()
 
     const message = document.querySelector('#message')
     message.textContent = ''

@@ -7,6 +7,7 @@ module.exports = Object.freeze({
     USER_EXISTS: "User Already Exists",
     USERNAME_TAKEN: "This Username is already used by another user",
     ACCOUNT_ALREADY_EXISTS: "This User already has an account associated with this email",
+    ACCOUNT_DOES_NOT_EXIST: "There is no account associated with this email",
     EMAIL_NOT_VERIFIED: "Please verify your email address before logging in",
     PASSWORD_MISMATCH: "Passwords do not match",
     INVALID_PASSWORD: "Password is incorrect",

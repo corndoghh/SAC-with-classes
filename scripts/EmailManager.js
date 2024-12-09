@@ -48,28 +48,33 @@ const sendMail = async (recipient, subject, htmlContent) => {
  */
 module.exports.sendConfirmationEmail = async (user) => {
  
-  
     const hashToken = Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")
   
     const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/confimation.html', "utf-8"))
-    dom.window.document.getElementById("custom-name").innerHTML = `Hello, ${user["FirstName"]}`
+    dom.window.document.getElementById("custom-name").innerHTML = `Hello, ${user.getValue("FirstName")}`
     dom.window.document.getElementById("confirmation-URL").setAttribute("href", "http://localhost:3000/verify?token="+hashToken+"&email="+user.getValue("Email"))
     dom.window.document.getElementById("unsubscribe-URL").setAttribute("href", "http://localhost:3000/unsubscribe?token="+hashToken+"&email="+user.getValue("Email"))
   
     await sendMail(user.getValue("Email"), "Newsletter Signup Confirmation", dom.window.document.documentElement.outerHTML)
   }
   
+  /**
+ * 
+ * @param {User} user 
+ */
   module.exports.sendForgotPasswordEmail = async (user) => {
   
     const hashToken = Crypto.createHash("sha256").update(user.getValue("UUID")+user.getValue("Email")).digest("hex")
     const tempCode = crypto.randomUUID()
-  
-    if (!(await doesPropertyExist(user["Email"], "tempCode"))) { await addUserProperty(user["Email"], "tempCode") }
-  
-    await setUserValue(user["Email"], "tempCode", tempCode)
+
+    if (!(user.hasProperty('tempCode'))) {
+      await user.addProperty('tempCode')
+    }
+    
+    await user.setValue('tempCode', tempCode)
   
     const dom = new JSDOM(await fs.readFile(__dirname + '/../emails/forgot-password.html', "utf-8"))
-    dom.window.document.getElementById("reset-URL").setAttribute("href", "http://localhost:3000/reset-password?token="+hashToken+"&email="+user["Email"]+"&tempCode="+tempCode)
+    dom.window.document.getElementById("reset-URL").setAttribute("href", "http://localhost:3000/reset-password?token="+hashToken+"&email="+user.getValue("Email")+"&tempCode="+tempCode)
   
-    await sendMail(user["Email"], "Reset Password", dom.window.document.documentElement.outerHTML)
+    await sendMail(user.getValue("Email"), "Reset Password", dom.window.document.documentElement.outerHTML)
   }

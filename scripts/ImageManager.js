@@ -37,6 +37,7 @@ module.exports = class ImageManager {
         return file === undefined ? false : file
     }
 
+
     getImage = async (filename) => {
         const file = await this.getFileFromName(filename)
         return file === false ? false : {

@@ -1,6 +1,8 @@
 document.getElementById('form').addEventListener('submit', async (e) => {
     e.preventDefault()
 
+    const loading = new Loading()
+
     const formData = Object.fromEntries(new FormData(e.target))
 
     console.log(JSON.stringify(formData))
@@ -15,10 +17,17 @@ document.getElementById('form').addEventListener('submit', async (e) => {
         body: JSON.stringify(formData)
     })
 
+    loading.destroy()
+
     const message = document.querySelector('#message')
     message.textContent = ''
 
     if (response.status !== 200) { message.textContent = (await response.json())["error"]; return }
 
-    window.location.href = (await response.json()).location
+    const jsonData = await response.json()
+
+    href = jsonData.location 
+    if (jsonData.message) { href += '?message='+jsonData.message }
+
+    window.location.href = href
 })

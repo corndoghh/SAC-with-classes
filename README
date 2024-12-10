@@ -1,0 +1,39 @@
+# SAC Website
+
+This repository contains the source code for the SAC website. Follow the instructions below to set up and run the project locally.
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14 or later recommended)
+- npm (comes with Node.js)
+
+## Getting Started
+
+1. **Clone the repository**  
+   Clone this repository to your local machine using:
+   ```bash
+   git clone <repository-url>
+   ```
+   Replace `<repository-url>` with the URL of this repository.
+
+2. **Navigate to the project directory**  
+   ```bash
+   cd sac-website
+   ```
+
+3. **Install dependencies**  
+   Run the following command to install all required dependencies:
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**  
+   Start the local development server by running:
+   ```bash
+   npm start
+   ```
+
+5. **Open in your browser**  
+   Open [http://localhost:3000](http://localhost:3000) in your web browser to view the website.

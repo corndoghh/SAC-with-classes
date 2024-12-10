@@ -2,3 +2,5 @@ node_modules/
 package-lock.json
 sessions/
 uploads/
+json/user.json
+json/blogs.json

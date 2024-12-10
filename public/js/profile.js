@@ -44,14 +44,6 @@ const start = async () => {
     const Language = document.querySelector('#Language')
 
 
-    if ((await fetch('/profile/pfp', {
-        method: 'get',
-        headers: {
-            "Content-Type": "image/png"
-        },
-        credentials: "same-origin"
-    })).status !== 404) { document.querySelector('#profile-pic-preview').src = '/profile/pfp' }
-
     TwoFactor.checked = jsonData["TwoFactor"] === "on" ? true : false
     TwoFactor.disabled = TwoFactor.checked ? true : false
     FirstName.placeholder = jsonData.FirstName

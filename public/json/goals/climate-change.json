@@ -1,0 +1,113 @@
+[
+    {
+        "id": "container",
+        "children": [
+            {
+                "type": "h1",
+                "innerHTML": {
+                    "en": "Climate Action",
+                    "es": "Acción Climática",
+                    "fr": "Action Climatique",
+                    "de": "Klimaschutz"
+                }
+            },
+            {
+                "type": "hr",
+                "class": "solid"
+            },
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "class": "headingQuestion",
+                        "innerHTML": {
+                            "en": "What Is Climate Action?",
+                            "es": "¿Qué es la Acción Climática?",
+                            "fr": "Qu'est-ce que l'Action Climatique ?",
+                            "de": "Was ist Klimaschutz?"
+                        }
+                    },
+                    {
+                        "type": "p",
+                        "id": "whatIs",
+                        "innerHTML": {
+                            "en": "Lorem ipsum dolor sit amet. Qui ratione dolorem et velit ullam est delectus quod in cumque velit. Est laborum alias est perspiciatis accusantium qui esse quam aut iusto blanditiis ad autem voluptatem aut libero error et facilis esse. In atque eaque qui vitae omnis est quasi nostrum sed corporis eaque. Consequuntur modi hic illo beatae ut obcaecati praesentium. Non magnam harum ut aliquid quam nam eligendi veniam. Ut totam sint id distinctio mollitia vel aperiam quia. Quo quia iste id aliquam natus aut optio aliquid sed esse praesentium a sunt voluptatem ad voluptatem quos ut eligendi laboriosam!"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "br"
+            },
+            {
+                "type": "section",
+                "id": "mainContent",
+                "children": [
+                    {
+                        "type": "article",
+                        "id": "image",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "/assets/globe.jpg",
+                                "alt": "A glass globe outside"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "article",
+                "id": "articleContainer",
+                "children": [
+                    {
+                        "type": "article",
+                        "class": "articles",
+                        "children": [
+                            {
+                                "type": "h3",
+                                "innerHTML": {
+                                    "en": "Why Is This Important?",
+                                    "es": "¿Por qué es importante?",
+                                    "fr": "Pourquoi est-ce important ?",
+                                    "de": "Warum ist das wichtig?"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "Lorem ipsum dolor sit amet. Aut esse voluptatem sit voluptas dolorem ea <a href='/goals/climate-change'>rerum placeat</a> ea quod incidunt et quod magni. Aut sapiente cumque et eveniet labore ut sunt fugiat quo libero sint et vitae quae nam aperiam praesentium. Ut dolorum totam est impedit enim ea veniam temporibus eum deserunt omnis sit beatae perferendis."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "class": "articles",
+                        "children": [
+                            {
+                                "type": "h3",
+                                "innerHTML": {
+                                    "en": "What Can You Do To Help?",
+                                    "es": "¿Qué puedes hacer para ayudar?",
+                                    "fr": "Que pouvez-vous faire pour aider ?",
+                                    "de": "Was kannst du tun, um zu helfen?"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "innerHTML": {
+                                    "en": "Lorem ipsum dolor sit amet. Aut esse voluptatem sit voluptas dolorem ea rerum placeat ea quod incidunt et quod magni."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "br"
+            }
+        ]
+    }
+]

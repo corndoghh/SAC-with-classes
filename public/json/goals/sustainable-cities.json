@@ -1,0 +1,133 @@
+[
+    {
+        "id": "container",
+        "children": [
+            {
+                "type": "h1",
+                "innerHTML": {
+                    "en": "Sustainable Cities and Communities",
+                    "es": "Ciudades y Comunidades Sostenibles",
+                    "fr": "Villes et Communautés Durables",
+                    "de": "Nachhaltige Städte und Gemeinden"
+                }
+            },
+            {
+                "type": "hr",
+                "class": "solid"
+            },
+            {
+                "type": "section",
+                "children": [
+                    {
+                        "type": "article",
+                        "children": [
+                            {
+                                "type": "h3",
+                                "class": "headingQuestion",
+                                "innerHTML": {
+                                    "en": "What are sustainable cities and communities?",
+                                    "es": "¿Qué son las ciudades y comunidades sostenibles?",
+                                    "fr": "Qu'est-ce que les villes et communautés durables ?",
+                                    "de": "Was sind nachhaltige Städte und Gemeinden?"
+                                }
+                            },
+                            {
+                                "type": "p",
+                                "id": "whatIs",
+                                "innerHTML": {
+                                    "en": "Cities represent the future of global living. The world’s population reached 8 billion in 2022, with over half living in urban areas. This figure is only expected to rise, with 70% of people expected to live in cities by 2050. Approximately 1.1 billion people currently live in slums or slum-like conditions in cities, with 2 billion more expected in the next 30 years. However, many of these cities are not ready for this rapid urbanization, which outpaces the development of housing, infrastructure, and services, leading to a rise in slums or slum-like conditions. Urban sprawl, air pollution, and limited open public spaces persist in cities. Good progress has been made since the implementation of the SDGs in 2015, doubling the number of countries with national and local disaster risk reduction strategies. But issues still remain, and in 2022, only half of the urban population had convenient access to public transport."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "article",
+                        "id": "image",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "/assets/sustain.jpg.webp",
+                                "alt": "A city surrounded by greenery, and sustainable electricity generators."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "div",
+                "id": "lowerPage",
+                "children": [
+                    {
+                        "type": "article",
+                        "id": "articleContainer",
+                        "children": [
+                            {
+                                "type": "article",
+                                "class": "articles",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "innerHTML": {
+                                            "en": "What Is Wrong With Them?",
+                                            "es": "¿Qué está mal con ellas?",
+                                            "fr": "Qu'est-ce qui ne va pas avec elles ?",
+                                            "de": "Was ist falsch mit ihnen?"
+                                        }
+                                    },
+                                    {
+                                        "type": "p",
+                                        "innerHTML": {
+                                            "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus amet, blanditiis, corporis, quos velit ipsam eveniet ea facere optio eius deserunt. Esse ad quidem doloribus deserunt repellat illo dolorem dolores?"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "article",
+                                "class": "articles",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "innerHTML": {
+                                            "en": "How Can You Help?",
+                                            "es": "¿Cómo puedes ayudar?",
+                                            "fr": "Comment pouvez-vous aider ?",
+                                            "de": "Wie kannst du helfen?"
+                                        }
+                                    },
+                                    {
+                                        "type": "p",
+                                        "innerHTML": {
+                                            "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, quibusdam veritatis corporis dolorem eos impedit quia obcaecati ipsum perferendis incidunt necessitatibus illum, fugiat perspiciatis excepturi quod quo nesciunt pariatur quis."
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "article",
+                                "class": "articles",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "innerHTML": {
+                                            "en": "What Do We Aim To Achieve?",
+                                            "es": "¿Qué aspiramos a lograr?",
+                                            "fr": "Que visons-nous à atteindre ?",
+                                            "de": "Was wollen wir erreichen?"
+                                        }
+                                    },
+                                    {
+                                        "type": "p",
+                                        "innerHTML": {
+                                            "en": "The cost of poorly planned urbanization can be seen in some of the huge slums, tangled traffic, greenhouse gas emissions, and sprawling suburbs all over the world. By choosing to act sustainably, we choose to build cities where all citizens live a decent quality of life and form a part of the city’s productive dynamic, creating shared prosperity and social stability without harming the environment."
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

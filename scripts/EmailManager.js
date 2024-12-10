@@ -9,11 +9,11 @@ const userManager = new UserManager()
 
 const transporter = nm.createTransport({
     port: 465,
-    host: "mail.the-caretaker.org", 
+    host: "smtp.gmail.com", 
     secure: true,
     auth: {
-        user: "no-reply@expunged.eu",
-        pass: "T5vMYxM2%ic7&m",
+        user: "harleyhughesworkemail@gmail.com",
+        pass: "obwp kohu alxv xlef ",
     },
     
 

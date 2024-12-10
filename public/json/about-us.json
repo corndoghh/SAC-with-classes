@@ -38,10 +38,7 @@
                     {
                         "type": "h3",
                         "textContent": {
-                            "en": "Aaron",
-                            "es": "Aaron",
-                            "fr": "Aaron",
-                            "de": "Aaron"
+                            "en": "Aaron"
                         }
                     },
                     {
@@ -61,10 +58,27 @@
                     {
                         "type": "h3",
                         "textContent": {
-                            "en": "Harley",
-                            "es": "Harley",
-                            "fr": "Harley",
-                            "de": "Harley"
+                            "en": "Harley"
+                        }
+                    },
+                    {
+                        "type": "p",
+                        "textContent": {
+                            "en": "For this project, I contributed primarily to the backend development of the website. I implemented email messaging, login management, and user management systems, as well as managed the JSON database and user-uploaded images. I also handled backend and frontend data validation to ensure smooth functionality. Additionally, I wrote the JavaScript for the frontend to enable dynamic interactions and enhance user experience.",
+                            "es": "Para este proyecto, contribuí principalmente al desarrollo del backend del sitio web. Implementé sistemas de mensajería por correo electrónico, gestión de inicio de sesión y gestión de usuarios, además de administrar la base de datos JSON y las imágenes cargadas por los usuarios. También me encargué de la validación de datos en el backend y frontend para garantizar un funcionamiento fluido. Además, escribí el JavaScript para el frontend con el fin de habilitar interacciones dinámicas y mejorar la experiencia del usuario.",
+                            "fr": "Pour ce projet, j'ai principalement contribué au développement du backend du site web. J'ai mis en place les systèmes de messagerie par email, de gestion des connexions et des utilisateurs, ainsi que géré la base de données JSON et les images téléchargées par les utilisateurs. J'ai également assuré la validation des données côté backend et frontend pour garantir un fonctionnement fluide. De plus, j'ai écrit le JavaScript pour le frontend afin de permettre des interactions dynamiques et d'améliorer l'expérience utilisateur.",
+                            "de": "Für dieses Projekt habe ich hauptsächlich zur Backend-Entwicklung der Website beigetragen. Ich habe E-Mail-Nachrichten, Login-Management und Benutzermanagement-Systeme implementiert sowie die JSON-Datenbank und von Nutzern hochgeladene Bilder verwaltet. Außerdem habe ich die Datenvalidierung im Backend und Frontend durchgeführt, um eine reibungslose Funktionalität zu gewährleisten. Zusätzlich habe ich das JavaScript für das Frontend geschrieben, um dynamische Interaktionen zu ermöglichen und die Benutzererfahrung zu verbessern."
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "article",
+                "children": [
+                    {
+                        "type": "h3",
+                        "textContent": {
+                            "en": "Sophie"
                         }
                     },
                     {
@@ -84,33 +98,7 @@
                     {
                         "type": "h3",
                         "textContent": {
-                            "en": "Sophie",
-                            "es": "Sophie",
-                            "fr": "Sophie",
-                            "de": "Sophie"
-                        }
-                    },
-                    {
-                        "type": "p",
-                        "textContent": {
-                            "en": "For this project, I contributed primarily to the design aspects, as I created the mood board using ideas we discussed. I also wrote the CSS for the ‘Goals’ pages and ensured that all other pages were cohesive. I coded the HTML for the ‘Our Info’ page. I was well suited to design as I took media as part of my A levels. For organisation, I planned many of the meetings and created a Gantt chart.",
-                            "es": "Para este proyecto, contribuí principalmente a los aspectos de diseño, ya que creé el tablero de ideas utilizando las ideas que discutimos. También escribí el CSS para las páginas de 'Metas' y me aseguré de que todas las demás páginas fueran coherentes. Programé el HTML para la página de 'Nuestra Información'. Estaba bien preparado para el diseño, ya que tomé medios como parte de mis A levels. Para la organización, planeé muchas de las reuniones y creé un gráfico de Gantt.",
-                            "fr": "Pour ce projet, j'ai principalement contribué aux aspects de conception, en créant le mood board à partir des idées que nous avons discutées. J'ai également écrit le CSS pour les pages 'Objectifs' et veillé à ce que toutes les autres pages soient cohérentes. J'ai codé le HTML pour la page 'Nos informations'. J'étais bien adapté pour le design car j'ai pris des cours de médias dans le cadre de mes A levels. Pour l'organisation, j'ai planifié de nombreuses réunions et créé un diagramme de Gantt.",
-                            "de": "Für dieses Projekt habe ich hauptsächlich zu den Designaspekten beigetragen, da ich das Moodboard unter Verwendung der Ideen, die wir besprochen haben, erstellt habe. Ich schrieb auch das CSS für die ‚Ziele‘-Seiten und stellte sicher, dass alle anderen Seiten kohärent waren. Ich codierte das HTML für die ‚Unsere Infos‘-Seite. Ich war gut für das Design geeignet, da ich Medien als Teil meiner A-Levels belegte. Für die Organisation plante ich viele der Besprechungen und erstellte ein Gantt-Diagramm."
-                        }
-                    }
-                ]
-            },
-            {
-                "type": "article",
-                "children": [
-                    {
-                        "type": "h3",
-                        "textContent": {
-                            "en": "Sylvain",
-                            "es": "Sylvain",
-                            "fr": "Sylvain",
-                            "de": "Sylvain"
+                            "en": "Sylvain"
                         }
                     },
                     {
@@ -221,28 +209,19 @@
                     {
                         "type": "td",
                         "textContent": {
-                            "en": "Sophie",
-                            "es": "Sophie",
-                            "fr": "Sophie",
-                            "de": "Sophie"
+                            "en": "Sophie"
                         }
                     },
                     {
                         "type": "td",
                         "textContent": {
-                            "en": "Sophie",
-                            "es": "Sophie",
-                            "fr": "Sophie",
-                            "de": "Sophie"
+                            "en": "Sophie"
                         }
                     },
                     {
                         "type": "td",
                         "textContent": {
-                            "en": "Harley",
-                            "es": "Harley",
-                            "fr": "Harley",
-                            "de": "Harley"
+                            "en": "Harley"
                         }
                     }
                 ]
@@ -262,10 +241,7 @@
                     {
                         "type": "td",
                         "textContent": {
-                            "en": "Sylvain",
-                            "es": "Sylvain",
-                            "fr": "Sylvain",
-                            "de": "Sylvain"
+                            "en": "Sylvain"
                         }
                     },
                     {

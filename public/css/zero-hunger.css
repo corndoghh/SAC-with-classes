@@ -36,7 +36,7 @@ a{
     max-width: 95%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-bottom: 1%;
+    margin-bottom: 2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -55,7 +55,8 @@ a{
     border-radius: 16px;
     float: none;
     padding: 0.5%;
-    height: 100%;
+    margin-top: 60%;
+    height: 37.5%;
     width: 100%;
     margin-right: 2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
@@ -73,8 +74,8 @@ a{
     padding: 2%;
     margin:2.5%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    
 }
+
 .articles h2{
     padding:0.5%;
     font-size:22.5px;

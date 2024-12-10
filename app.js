@@ -122,7 +122,7 @@ const logout = async (req, res) => {
 //============== GET ==============\\
 
 app.get('/', (req, res) => {
-    res.render("main.ejs")
+    res.render("index.ejs")
 })
 
 app.get('/about-us', (req, res) => {

@@ -14,7 +14,7 @@ const loadPage = async () => {
     });   
 
 
-    const data = await fetch(`../json/${window.location.pathname === '/' ? 'main' : window.location.pathname}.json`)
+    const data = await fetch(`../json/${window.location.pathname === '/' ? 'index' : window.location.pathname}.json`)
 
     if (data.status === 404) { return }
     console.log(data)

@@ -55,7 +55,7 @@ a{
     border-radius: 16px;
     float: none;
     padding: 0.5%;
-    margin-top: 60%;
+    margin-top: 62.5%;
     height: 37.5%;
     width: 100%;
     margin-right: 2.5%;
@@ -175,9 +175,6 @@ img{
 }
 .dark-mode .articleContainer2{
     background-color: #6a994e;
-}
-.dark-mode #container{
-    background-color: #242936;
 }
 .dark-mode h1{
     color: #95d5b2;
